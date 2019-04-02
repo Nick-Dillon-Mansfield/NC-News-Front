@@ -1,12 +1,43 @@
 import React, { Component } from 'react';
 import axios from 'axios';
 import { Link } from '@reach/router';
+// import handleSortByChange from '../utils/utilFunctions'
+// import fetchArticles from '../api';
 
 class Articles extends Component {
     state = {
         articles: null,
-        topic: this.props.topic
+        topic: this.props.topic,
+        url: 'https://ncnews-api.herokuapp.com/api/articles/'
     }
+
+    componentDidMount() {
+        let url = this.state.url
+        if (this.props.topic) url+=`?topic=${this.props.topic}` 
+        this.getArticles(url);
+    };
+    
+    componentDidUpdate(prevProps, prevState) {
+        if (prevState.articles !== this.state.articles) {
+            this.setState({articles: this.state.articles});
+        };
+        if (prevState.topic !== this.props.topic) {
+            let url = this.state.url
+            if (this.props.topic) url+=`?topic=${this.props.topic}` 
+            this.getArticles(url)
+        };
+    };
+    
+    handleSortByChange = (event) => {
+        const sortByURL = event.target.value
+        event.preventDefault();
+        axios.get(`${sortByURL}`)
+            .then(({data: {articles}}) => {
+                this.setState({
+                    articles
+                })
+            });
+    };
 
     getArticles = (url) => {
         return axios.get(url)
@@ -18,35 +49,20 @@ class Articles extends Component {
           })
       };
 
-    componentDidMount() {
-        let url = 'https://ncnews-api.herokuapp.com/api/articles/'
-        if (this.props.topic) url+=`?topic=${this.props.topic}` 
-        this.getArticles(url);
-    };
-
-    componentDidUpdate(prevProps, prevState) {
-        if (prevState.articles !== this.state.articles) {
-            this.setState({articles: this.state.articles});
-        };
-        if (prevState.topic !== this.props.topic) {
-            let url = 'https://ncnews-api.herokuapp.com/api/articles/'
-            if (this.props.topic) url+=`?topic=${this.props.topic}` 
-            this.getArticles(url)
-        };
-    };
-
     displayArticles = () => {
         const articles = this.state.articles;
         return <ul>
             {articles.map(article => {
                 return <div key={article.article_id}>
-                --------------------
+                =====================
                     <p>
                         Title: {article.title} <br/>
                         Topic: {article.topic} <br/>
                         Author: {article.author} <br/>
-                        Published: {article.created_at}
+                        Published: {article.created_at} <br/>
+                ------
                     </p>
+                    <h6>Votes: {article.votes}  ||  Comments: {article.comment_count}</h6>
                     <Link to={`/articles/${article.article_id}`} key={`${article.article_id}`}>
                         Open Article
                     </Link><br />
@@ -58,10 +74,21 @@ class Articles extends Component {
     render() {
         const articleCount = this.state.articles ? this.state.articles.length : 0;
         const subject = this.state.topic ? `about ${this.state.topic}` : ""
+        const sortByURL = this.state.url + "?sort_by=";
         return (
             <div>
                 <h3>Articles</h3>
                 <h4>Displaying {articleCount} article(s) {subject}!</h4>
+                <form>
+                    <select onChange={this.handleSortByChange}>
+                        <option value={`${sortByURL}created_at&order=desc`}>Date (newest to oldest)</option>
+                        <option value={`${sortByURL}created_at&order=asc`} >Date (oldest to newest)</option>
+                        <option value={`${sortByURL}comment_count&order=desc`}>Comments (most to fewest)</option>
+                        <option value={`${sortByURL}comment_count&order=asc`} >Comments (fewest to most)</option>
+                        <option value={`${sortByURL}votes&order=desc`}>Votes (most to fewest)</option>
+                        <option value={`${sortByURL}votes&order=asc`} >Votes (fewest to most)</option>
+                    </select>
+                </form>
                 {this.state.articles && this.displayArticles()}
             </div>
         )

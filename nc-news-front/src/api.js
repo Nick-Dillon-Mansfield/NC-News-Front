@@ -9,5 +9,12 @@ export const fetchTopics = () => {
         })
 }
 
+// export const fetchArticles = (url) => {
+//     return axios.get(`${url}`)
+//         .then(({data: {articles}}) => {
+//             return articles;
+//         })
+// }
+
 
 

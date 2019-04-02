@@ -13,7 +13,7 @@ import SingleArticle from './components/SingleArticle'
 class App extends Component {
 
   state = {
-
+    
   }
 
   getTopics = (url) => {

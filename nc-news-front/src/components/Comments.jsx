@@ -8,14 +8,13 @@ class Comments extends Component {
     }
 
     render() {
-        console.log(this.props);
         return (
             <div>
                 {this.props.comments.map(comment => {
-                    return <div>
+                    return <div key={comment.comment_id}>
                         --------------
                         <p>{comment.body}</p>
-                        <h6>{comment.author} || {comment.created_at} </h6>
+                        <h6>{comment.author}   ||   {comment.created_at} </h6>
                     </div>
                 })}
             </div>
