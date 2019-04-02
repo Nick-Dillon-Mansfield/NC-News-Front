@@ -30,6 +30,7 @@ class Articles extends Component {
     
     handleSortByChange = (event) => {
         const sortByURL = event.target.value
+        console.log(sortByURL)
         event.preventDefault();
         axios.get(`${sortByURL}`)
             .then(({data: {articles}}) => {
@@ -74,7 +75,8 @@ class Articles extends Component {
     render() {
         const articleCount = this.state.articles ? this.state.articles.length : 0;
         const subject = this.state.topic ? `about ${this.state.topic}` : ""
-        const sortByURL = this.state.url + "?sort_by=";
+        const subjectURL = this.state.topic ? `topic=${this.state.topic}&` : ""
+        const sortByURL = this.state.url + '?' + subjectURL + "sort_by=";
         return (
             <div>
                 <h3>Articles</h3>
