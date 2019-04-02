@@ -36,7 +36,7 @@ class Topics extends Component {
                             Topic: {topic.slug} <br/>
                             Description: {topic.description}
                         </p>
-                        <Link to={`/articles/${topic.slug}`} key={`articles?topic=${topic.slug}`} >
+                        <Link to={`/topics/${topic.slug}/articles`} key={`articles?topic=${topic.slug}`} >
                         All articles about {topic.slug}!
                         </Link>
                     </div>

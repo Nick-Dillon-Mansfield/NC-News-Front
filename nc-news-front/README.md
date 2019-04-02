@@ -33,7 +33,7 @@ Use the generic react-project-checklist as a guide to setting up your app. Here 
 
 1. As a user, I should be able to view a list of all articles - DONE
 2. As a user, I should be able to view a list of all articles on a specific topic. - DONE 
-3. As a user, I should be able to view an individual article.
+3. As a user, I should be able to view an individual article. - DONE
 4. As a user, I should be able to view an individual article's comments.
 5. As a user, I should be able to sort articles by: 
     - date created

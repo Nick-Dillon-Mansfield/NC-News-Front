@@ -46,8 +46,8 @@ class App extends Component {
         <Router>
           <Topics path="topics"/>
           <Articles path="articles"/>
-          <Articles path="articles/:topic" />
-          <SingleArticle path="article/:article_id" />
+          <Articles path="topics/:topic/articles" />
+          <SingleArticle path="articles/:article_id" />
         </Router>
         <button>
           About

@@ -47,7 +47,7 @@ class Articles extends Component {
                         Author: {article.author} <br/>
                         Published: {article.created_at}
                     </p>
-                    <Link to={`/article/${article.article_id}`} key={`${article.article_id}`}>
+                    <Link to={`/articles/${article.article_id}`} key={`${article.article_id}`}>
                         Open Article
                     </Link><br />
                 </div>
