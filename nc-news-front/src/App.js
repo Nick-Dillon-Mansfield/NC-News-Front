@@ -8,6 +8,7 @@ import Help from './components/Help';
 import Topics from './components/Topics';
 import Articles from './components/Articles';
 import SingleArticle from './components/SingleArticle'
+import ArticlePostScreen from './components/ArticlePostScreen'
 
 
 class App extends Component {
@@ -48,6 +49,7 @@ class App extends Component {
           <Articles path="articles"/>
           <Articles path="topics/:topic/articles" />
           <SingleArticle path="articles/:article_id" />
+          <ArticlePostScreen path="articles/post"/>
         </Router>
         <button>
           About

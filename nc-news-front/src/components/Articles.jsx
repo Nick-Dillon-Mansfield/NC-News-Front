@@ -30,7 +30,6 @@ class Articles extends Component {
     
     handleSortByChange = (event) => {
         const sortByURL = event.target.value
-        console.log(sortByURL)
         event.preventDefault();
         axios.get(`${sortByURL}`)
             .then(({data: {articles}}) => {
@@ -81,6 +80,9 @@ class Articles extends Component {
             <div>
                 <h3>Articles</h3>
                 <h4>Displaying {articleCount} article(s) {subject}!</h4>
+                <Link to="/articles/post" key='articles/post'>
+                    Post Article!
+                </Link>
                 <form>
                     <select onChange={this.handleSortByChange}>
                         <option value={`${sortByURL}created_at&order=desc`}>Date (newest to oldest)</option>
