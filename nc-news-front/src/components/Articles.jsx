@@ -1,22 +1,38 @@
 import React, { Component } from 'react';
-import {fetchArticles} from '../api';
+import axios from 'axios';
+import {Router} from "@reach/router";
 
 
 class Articles extends Component {
     state = {
-        articles: null
+        articles: null,
+        topic: this.props.topic
     }
 
+    getArticles = (url) => {
+        return axios.get(url)
+          .then(({data: {articles}}) => {
+            this.setState({
+                articles,
+                topic: this.props.topic
+            })
+          })
+      };
+
     componentDidMount() {
-        fetchArticles()
-        .then((articles) => {
-            this.setState({articles});
-        });
+        let url = 'https://ncnews-api.herokuapp.com/api/articles/'
+        if (this.props.topic) url+=`?topic=${this.props.topic}` 
+        this.getArticles(url);
     };
 
     componentDidUpdate(prevProps, prevState) {
         if (prevState.articles !== this.state.articles) {
             this.setState({articles: this.state.articles});
+        };
+        if (prevState.topic !== this.props.topic) {
+            let url = 'https://ncnews-api.herokuapp.com/api/articles/'
+            if (this.props.topic) url+=`?topic=${this.props.topic}` 
+            this.getArticles(url)
         };
     };
 
@@ -37,9 +53,12 @@ class Articles extends Component {
     };
 
     render() {
-        console.log(this.props)
-        return (<div>
+        const articleCount = this.state.articles ? this.state.articles.length : 0;
+        const subject = this.state.topic ? `about ${this.state.topic}` : ""
+        return (
+        <div>
             <h3>Articles</h3>
+            <h4>Displaying {articleCount} article(s) {subject}!</h4>
             {this.state.articles && this.displayArticles()}
         </div>
         )}

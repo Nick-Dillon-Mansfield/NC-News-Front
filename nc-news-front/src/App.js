@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import './App.css';
+import axios from 'axios';
 import { Router, Link } from '@reach/router';
 import Header from './components/Header';
 import Account from './components/Account';
@@ -13,11 +14,19 @@ class App extends Component {
 
   }
 
-  componentDidMount() {
-    const url = 'https://ncnews-api.herokuapp.com/api'
-  };
+  getTopics = (url) => {
+    return axios.get(url + "/topics")
+      .then(({data: {topics}}) => {
+        this.setState({topics})
+      })
+  }
 
-  handleClick = (event) => {
+
+  componentDidMount() {
+
+  };
+    
+    handleClick = (event) => {
     event.preventDefault();
   }
 
@@ -26,15 +35,16 @@ class App extends Component {
       <div className="App">
         <Header />
         <Account />
-        <Link to="topics" key="topics" onClick={() => this.handleClick()}>
+        <Link to="topics" key="topics" >
         Topics
         </Link>
-        <Link to="articles" key="articles" onClick={() => this.handleClick()}>
+        <Link to="articles" key="articles" >
         Articles
         </Link>
         <Router>
-          <Topics path="topics"/>
+          <Topics path="topics" articles={this.state.articles}/>
           <Articles path="articles"/>
+          <Articles path="articles/:topic" />
         </Router>
         <button>
           About
