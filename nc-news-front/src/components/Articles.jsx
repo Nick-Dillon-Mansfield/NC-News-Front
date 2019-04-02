@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import axios from 'axios';
-import {Router} from "@reach/router";
-
+import { Link } from '@reach/router';
 
 class Articles extends Component {
     state = {
@@ -41,12 +40,16 @@ class Articles extends Component {
         return <ul>
             {articles.map(article => {
                 return <div key={article.article_id}>
+                --------------------
                     <p>
                         Title: {article.title} <br/>
                         Topic: {article.topic} <br/>
                         Author: {article.author} <br/>
                         Published: {article.created_at}
                     </p>
+                    <Link to={`/article/${article.article_id}`} key={`${article.article_id}`}>
+                        Open Article
+                    </Link><br />
                 </div>
             })}
         </ul>
@@ -56,12 +59,13 @@ class Articles extends Component {
         const articleCount = this.state.articles ? this.state.articles.length : 0;
         const subject = this.state.topic ? `about ${this.state.topic}` : ""
         return (
-        <div>
-            <h3>Articles</h3>
-            <h4>Displaying {articleCount} article(s) {subject}!</h4>
-            {this.state.articles && this.displayArticles()}
-        </div>
-        )}
+            <div>
+                <h3>Articles</h3>
+                <h4>Displaying {articleCount} article(s) {subject}!</h4>
+                {this.state.articles && this.displayArticles()}
+            </div>
+        )
+    }
 }
 
 export default Articles

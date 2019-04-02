@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Link, Router } from '@reach/router';
+import { Link } from '@reach/router';
 import {fetchTopics} from '../api';
 
 class Topics extends Component {
@@ -45,33 +45,11 @@ class Topics extends Component {
         </div>
     }
     
-    displayArticlesOnTopic = () => {
-
-        const {articles, topic} = this.state;
-        return (
-            <div>
-                <h3>Articles about {topic}</h3>
-                {articles.map(article => {
-                    console.log(article.topic + " should be " + topic)
-                    if (article.topic === topic) { 
-                        return (
-                            <div key={topic.slug}>Hello</div>
-                        )
-                    } else return;
-                })}
-            </div>
-        )
-    }
-
     render() {
         return (
             <div>
                 <h3>Topics</h3>
-                {
-                    this.state.topic === "" ? 
-                        this.state.topics && this.displayTopics() :
-                        this.state.articles && this.displayArticlesOnTopic()
-                }
+                {this.state.topics && this.displayTopics()}
             </div>
         )
     }

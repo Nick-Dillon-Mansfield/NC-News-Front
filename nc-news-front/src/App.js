@@ -6,7 +6,9 @@ import Header from './components/Header';
 import Account from './components/Account';
 import Help from './components/Help';
 import Topics from './components/Topics';
-import Articles from './components/Articles'
+import Articles from './components/Articles';
+import SingleArticle from './components/SingleArticle'
+
 
 class App extends Component {
 
@@ -42,9 +44,10 @@ class App extends Component {
         Articles
         </Link>
         <Router>
-          <Topics path="topics" articles={this.state.articles}/>
+          <Topics path="topics"/>
           <Articles path="articles"/>
           <Articles path="articles/:topic" />
+          <SingleArticle path="article/:article_id" />
         </Router>
         <button>
           About
