@@ -1,16 +1,16 @@
 import React, {Component} from 'react';
 import {fetchTopics} from '../api'
 import axios from 'axios';
-import {navigate} from '@reach/router'
+import {Link, navigate} from '@reach/router'
 
 class ArticlePostScreen extends Component {
 
     state = {
         "topics": null,
-        "topic": '',
-        "title": '',
-        "body": '',
-        "username": 'grumpy19'
+        "topic": null,
+        "title": null,
+        "body": null,
+        "username": 'grumpy19' // REMOVE THIS WHEN CREATING A LOG-IN - ONLY USING THIS AS A DUMMY USERNAME TO CREATE ARTICLES
     }
 
     componentDidMount() {
@@ -49,6 +49,7 @@ class ArticlePostScreen extends Component {
             <div>
                 <h3>New Article</h3>
                 <p>Please ensure you have selected a topic, entered a title and your article before submitting!</p>
+                -----------------------------
                 <form onSubmit={this.handleSubmit}>
                     <label>
                         Select Topic: 
@@ -61,6 +62,7 @@ class ArticlePostScreen extends Component {
                             })}
                         </select>
                     </label> <br/>
+                    <p>Can't find the topic you're looking for? Click <Link to='/topics/post'>here</Link> to create a new one: </p> <br/>
                     <label>
                         Title: 
                         <input type="text" onChange={this.handleChange} data_key="title"></input>

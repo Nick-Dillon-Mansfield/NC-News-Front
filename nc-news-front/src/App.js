@@ -9,12 +9,13 @@ import Topics from './components/Topics';
 import Articles from './components/Articles';
 import SingleArticle from './components/SingleArticle'
 import ArticlePostScreen from './components/ArticlePostScreen'
+import TopicPostScreen from './components/TopicPostScreen'
 
 
 class App extends Component {
 
   state = {
-    
+    user: null
   }
 
   getTopics = (url) => {
@@ -28,8 +29,12 @@ class App extends Component {
   componentDidMount() {
 
   };
+  
+  updateUser = () => {
     
-    handleClick = (event) => {
+  }
+
+  handleClick = (event) => {
     event.preventDefault();
   }
 
@@ -49,6 +54,7 @@ class App extends Component {
           <Articles path="articles"/>
           <Articles path="topics/:topic/articles" />
           <SingleArticle path="articles/:article_id" />
+          <TopicPostScreen path="topics/post"/>
           <ArticlePostScreen path="articles/post"/>
         </Router>
         <button>

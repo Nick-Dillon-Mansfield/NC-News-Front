@@ -22,3 +22,5 @@ npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
 navigation-notes.js
+logging-in-notes.js
+optimistic-rendering-notes.js

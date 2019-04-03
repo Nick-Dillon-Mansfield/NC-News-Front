@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
-import axios from 'axios';
-import { Link } from '@reach/router';
+// import axios from 'axios';
+// import { Link } from '@reach/router';
 
 class Comments extends Component {
     state = {
