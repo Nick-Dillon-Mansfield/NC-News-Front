@@ -1,15 +1,23 @@
 import React, {Component} from 'react';
 import {deletePost} from '../api'
+import {navigate} from '@reach/router'
 
 const DeleteButton = (props) => {
     
+    const {type, id, url, article_id} = props;
+
     const handleClick = (event) => {
-        const {type, id} = props;
         event.preventDefault()
         if (window.confirm('Are you sure you want to delete this? Once you do, you cannot undo it!')) {
             deletePost(type, id)
-                .then(() => {
-                   alert('Deleted!') 
+                .then((deleteObj) => {
+                    console.log(deleteObj)
+                        if (type === "Comment") {
+                            navigate(`${url}${article_id}`)
+                    } else {
+
+                    }
+                   alert(`${type} Deleted!`) 
                 })
         }
     } 

@@ -38,6 +38,7 @@ class Comments extends Component {
     }
 
     render() {
+        console.log(this.props)
         const comments = this.state.comments;
         return (
             <div>
@@ -45,11 +46,12 @@ class Comments extends Component {
             {comments ? 
                 comments.map(comment => {
                     const {author, body, comment_id, created_at} = comment;
+                    const url = `http://localhost:3000/articles/`
                     return <div key={comment_id}>
                         --------------
                         <p>{body}</p>
                         <h6>{author}   ||   {created_at} </h6>
-                        {author === this.props.user && <DeleteButton id={comment_id} type="Comment"/>}
+                        {author === this.props.user && <DeleteButton article_id={this.props.article_id} id={comment_id} type="Comment" url={url}/>}
                     </div>
                 }) :
             <p>No comments to show! :O</p>
