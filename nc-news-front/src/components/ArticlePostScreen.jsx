@@ -10,7 +10,6 @@ class ArticlePostScreen extends Component {
         "topic": null,
         "title": null,
         "body": null,
-        "username": 'grumpy19' // REMOVE THIS WHEN CREATING A LOG-IN - ONLY USING THIS AS A DUMMY USERNAME TO CREATE ARTICLES
     }
 
     componentDidMount() {
@@ -28,7 +27,8 @@ class ArticlePostScreen extends Component {
     }
 
     handleSubmit = (event) => {
-        const {topic, title, body, username} = this.state
+        const {topic, title, body} = this.state
+        const username = this.props.user
         const url = 'https://ncnews-api.herokuapp.com/api/articles'
         event.preventDefault();
         axios.post(url, {
@@ -71,7 +71,10 @@ class ArticlePostScreen extends Component {
                         Article: 
                         <textarea data_key="body" onChange={this.handleChange}></textarea>
                     </label> <br/>
-                    <button type="submit">Post article!</button>
+                    {this.props.user ? 
+                        <button type="submit">Post article!</button> :
+                        <h4>You must login before posting!</h4>
+                    }
                 </form>
             </div>
         )

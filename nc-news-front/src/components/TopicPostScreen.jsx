@@ -56,7 +56,11 @@ class TopicPostScreen extends Component {
                         Topic Description: 
                         <textarea type="text" data_key="description" onChange={this.handleChange}></textarea>
                     </label> <br/>
-                    <button type="submit">Create Topic!</button>
+
+                    {this.props.user ? 
+                        <button type="submit">Create Topic!</button> :
+                        <h4>You must login before creating a topic!</h4>
+                    }
                 </form>
             </div>
         );

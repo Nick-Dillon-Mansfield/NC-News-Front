@@ -50,13 +50,13 @@ class App extends Component {
         <Link to="articles" key="articles" >
         Articles
         </Link>
-        <Router>
-          <Topics path="topics"/>
-          <Articles path="articles"/>
-          <Articles path="topics/:topic/articles" />
-          <SingleArticle path="articles/:article_id" />
-          <TopicPostScreen path="topics/post"/>
-          <ArticlePostScreen path="articles/post"/>
+        <Router test="Testing">
+          <Topics path="topics" user={this.state.user}/>
+          <Articles path="articles" user={this.state.user}/>
+          <Articles path="topics/:topic/articles" user={this.state.user}/>
+          <SingleArticle path="articles/:article_id" user={this.state.user}/>
+          <TopicPostScreen path="topics/post" user={this.state.user}/>
+          <ArticlePostScreen path="articles/post" user={this.state.user}/>
         </Router>
         <button>
           About

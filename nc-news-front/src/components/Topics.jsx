@@ -51,9 +51,14 @@ class Topics extends Component {
         return (
             <div>
                 <h3>Topics</h3>
-                <Link to="/topics/post" key="topics/post">
-                    Create Topic!
-                </Link>
+                {this.props.user ? 
+                    <Link to="/topics/post" key="topics/post">
+                        Create Topic!
+                    </Link> : 
+                    <h4>
+                        Login to create a topic!
+                    </h4>
+                }
                 {this.props.location.state && this.props.location.state.newTopic && <p className="newPost">Thank you for posting a new topic!</p>}
                 <h4>Displaying {topicCount} topics!</h4>
                 {this.state.topics && this.displayTopics()}

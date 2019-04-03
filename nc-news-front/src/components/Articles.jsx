@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import axios from 'axios';
 import { Link } from '@reach/router';
+import { link } from 'fs';
 // import handleSortByChange from '../utils/utilFunctions'
 // import fetchArticles from '../api';
 
@@ -80,9 +81,14 @@ class Articles extends Component {
             <div>
                 <h3>Articles</h3>
                 <h4>Displaying {articleCount} article(s) {subject}!</h4>
-                <Link to="/articles/post" key='articles/post'>
-                    Post Article!
-                </Link>
+                {this.props.user ? 
+                    <Link to="/articles/post" key='articles/post'>
+                        Post Article!
+                    </Link> :
+                    <h4>
+                        Login to post an article!
+                    </h4>
+                }
                 <form>
                     <select onChange={this.handleSortByChange}>
                         <option value={`${sortByURL}created_at&order=desc`}>Date (newest to oldest)</option>

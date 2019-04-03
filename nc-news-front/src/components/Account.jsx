@@ -6,7 +6,8 @@ class Account extends Component {
     state = {
         users: null,
         user: null,
-        isValidUser: null,
+        isExistingUser: null,
+        isNotExistingUser: null,
     }
 
     componentDidMount() {
@@ -22,18 +23,19 @@ class Account extends Component {
         const existingUsername = userList.some(existingUser => {
             return existingUser.username === user
         });
-        console.log("checkUsername returns " + existingUsername)
         this.setState({
-            isValidUser: existingUsername
+            isExistingUser: existingUsername
         })
     }
 
     handleSubmit = (event) => {
         const {user, users} = this.state;
         event.preventDefault();
-        if (this.state.isValidUser) {
+        if (this.state.isExistingUser) {
             this.props.setUser(user)
-        } else console.log('username not found!')
+        } else {
+            alert('Sorry, cannot find that user!')
+        }
     }
 
     handleChange = (event) => {
@@ -44,11 +46,17 @@ class Account extends Component {
             [stateProp]: event.target.value
         });
     };
+
+    handleLogout = (event) => {
+        event.preventDefault();
+        this.props.setUser(null);
+    }
     
     render() {
         return (
             <div>
-                <h4>Account Register and Login will go here...</h4>
+                {this.props.user ? 
+                <button type="submit" onClick={this.handleLogout}>Log out!</button> : 
                 <form>
                     <label>
                         Username: 
@@ -56,6 +64,7 @@ class Account extends Component {
                         <button type="submit" onClick={this.handleSubmit}>Login!</button>
                     </label>
                 </form>
+            }
             </div>
         );
     };
