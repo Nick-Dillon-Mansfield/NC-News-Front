@@ -21,3 +21,9 @@ code {
   display: grid;
   grid-auto-columns: 2fr, 1fr;
 }
+
+.newComment{
+  border-style: groove;
+  border-color: gold;
+  
+}
