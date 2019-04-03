@@ -3,24 +3,19 @@ import Comments from './Comments';
 import CommentPoster from './CommentPoster'
 import axios from "axios";
 import "../index.css";
+import {fetchSingleArticle} from '../api'
 
 class SingleArticle extends Component {
     state = {
         article: null,
-        comments: null,
         showComments: false,
     }
     
     componentDidMount() {
-        const articleURL = `https://ncnews-api.herokuapp.com/api/articles/${this.props.article_id}`
-        const commentsURL = `https://ncnews-api.herokuapp.com/api/articles/${this.props.article_id}/comments`
-        const articleData = axios.get(articleURL);
-        const commentsData = axios.get(commentsURL);
-        Promise.all([articleData, commentsData])
-            .then((info) => {
+        fetchSingleArticle(this.props.article_id)
+            .then((article) => {
                 this.setState({
-                    article: info[0].data.article,
-                    comments: info[1].data.comments,
+                    article
                 })
             })
     }
@@ -45,8 +40,7 @@ class SingleArticle extends Component {
             <h4>Votes: {votes}</h4> <br/>
             <h4>Comments: {comment_count}</h4> <br/>
             <button onClick={this.handleClick}>Show/Hide Comments</button>
-            <CommentPoster user={this.props.user} article_id={this.props.article_id}/>
-            {this.state.showComments && <Comments comments={this.state.comments}/>}
+            {this.state.showComments && <Comments user={this.props.user} article_id={this.props.article_id}/>}
         </div>
         ) 
         else {

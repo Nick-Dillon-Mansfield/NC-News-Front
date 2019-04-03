@@ -16,18 +16,30 @@ export const fetchUsers = () => {
         })
 }
 
+export const fetchComments = (article_id) => {
+    return axios.get(`${baseURL}/articles/${article_id}/comments`)
+        .then(({data: {comments}}) => {
+            return comments;
+        })
+}
+
+export const fetchSingleArticle = (article_id) => {
+    return axios.get(`${baseURL}/articles/${article_id}`)
+        .then(({data: { article }}) => {
+            return article;
+        })
+}
+
 export const postComment = (user, body, article_id) => {
-    console.log('about to post')
-    console.log(user, body, article_id)
     return axios.post(`${baseURL}/articles/${article_id}/comments`, {
         username: user,
         body: body
     })
     .then(({data: {createdComment}}) => {
-        console.log('posted')
         return createdComment;
     })
 }
+
 
 // export const fetchArticles = (url) => {
 //     return axios.get(`${url}`)

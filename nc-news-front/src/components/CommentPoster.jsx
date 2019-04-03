@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import { postComment } from '../api';
+import { fetchComments, postComment } from '../api';
 import '../index.css';
 
 class CommentPoster extends Component {
@@ -10,6 +10,10 @@ class CommentPoster extends Component {
         comment: null,
     }
     
+    componentDidMount() {
+
+    }
+
     toggleCommentBox = () => {
         this.setState({
             showCommentBox: !this.state.showCommentBox
@@ -25,17 +29,20 @@ class CommentPoster extends Component {
     }
     
     handleSubmit = (event) => {
-        const {user, article_id} = this.props;
+        const {user, article_id, updateCommentsToDisplay} = this.props;
         const {body} = this.state;
         event.preventDefault()
         postComment(user, body, article_id)
         .then(comment => {
+            updateCommentsToDisplay(comment)
             this.setState({
                 comment
             })
         })
         //optimistic rendering here
     }
+
+
 
     render() {
         const comment = this.state.comment;
