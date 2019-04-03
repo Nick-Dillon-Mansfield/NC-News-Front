@@ -33,7 +33,7 @@ class TopicPostScreen extends Component {
             slug,
             description,
         })
-        .then(({data}) => {
+        .then((res) => {
             navigate(`/topics`, {
                 state: {newTopic: true}
             })

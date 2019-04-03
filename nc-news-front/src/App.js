@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import './App.css';
+import './index.css';
 import axios from 'axios';
 import { Router, Link } from '@reach/router';
 import Header from './components/Header';
@@ -25,13 +26,10 @@ class App extends Component {
       })
   }
 
-
-  componentDidMount() {
-
-  };
-  
-  updateUser = () => {
-    
+  setUser = (loggedUser) => {
+    this.setState({
+      user: loggedUser
+    })
   }
 
   handleClick = (event) => {
@@ -39,10 +37,13 @@ class App extends Component {
   }
 
   render() {
+    console.log('APP PAGE - logged in as ' + this.state.user)
     return (
       <div className="App">
-        <Header />
-        <Account />
+        <div className="topBar">
+          <Header user={this.state.user}/>
+          <Account user={this.state.user} setUser={this.setUser}/>
+        </div>
         <Link to="topics" key="topics" >
         Topics
         </Link>

@@ -16,3 +16,8 @@ code {
 .newPost {
   color: green;
 }
+
+.topBar{
+  display: grid;
+  grid-auto-columns: 2fr, 1fr;
+}

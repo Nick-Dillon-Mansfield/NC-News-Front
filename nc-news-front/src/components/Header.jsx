@@ -1,8 +1,11 @@
 import React from 'react';
 
-const Header = () => {
+const Header = (props) => {
     return (
-        <h1>NC News!</h1>
+        <div>
+            <h1>NC News!</h1>
+            {props.user && <h5>Logged in as {props.user}</h5>}
+        </div>
     )
 }
 

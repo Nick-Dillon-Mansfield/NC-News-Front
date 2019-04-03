@@ -9,6 +9,13 @@ export const fetchTopics = () => {
         })
 }
 
+export const fetchUsers = () => {
+    return axios.get(`${baseURL}/users`)
+        .then(({ data: {users} }) => {
+            return users;
+        })
+}
+
 // export const fetchArticles = (url) => {
 //     return axios.get(`${url}`)
 //         .then(({data: {articles}}) => {
