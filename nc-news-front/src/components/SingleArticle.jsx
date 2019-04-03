@@ -1,7 +1,5 @@
 import React, { Component } from 'react';
 import Comments from './Comments';
-import CommentPoster from './CommentPoster'
-import axios from "axios";
 import "../index.css";
 import {fetchSingleArticle} from '../api'
 

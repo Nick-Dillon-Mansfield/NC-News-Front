@@ -1,9 +1,8 @@
 import React, { Component } from 'react';
 import axios from 'axios';
 import { Link } from '@reach/router';
-import { link } from 'fs';
-// import handleSortByChange from '../utils/utilFunctions'
-// import fetchArticles from '../api';
+import DeleteButton from './DeleteButton';
+
 
 class Articles extends Component {
     state = {
@@ -54,19 +53,21 @@ class Articles extends Component {
         const articles = this.state.articles;
         return <ul>
             {articles.map(article => {
-                return <div key={article.article_id}>
+                const {title, topic, author, created_at, comment_count, article_id, votes} = article
+                return <div key={article_id}>
                 =====================
                     <p>
-                        Title: {article.title} <br/>
-                        Topic: {article.topic} <br/>
-                        Author: {article.author} <br/>
-                        Published: {article.created_at} <br/>
+                        Title: {title} <br/>
+                        Topic: {topic} <br/>
+                        Author: {author} <br/>
+                        Published: {created_at} <br/>
                 ------
                     </p>
-                    <h6>Votes: {article.votes}  ||  Comments: {article.comment_count}</h6>
-                    <Link to={`/articles/${article.article_id}`} key={`${article.article_id}`}>
+                    <h6>Votes: {votes}  ||  Comments: {comment_count}</h6>
+                    <Link to={`/articles/${article_id}`} key={`${article_id}`}>
                         Open Article
                     </Link><br />
+                    {author === this.props.user && <DeleteButton id={article_id} type="Article"/>}
                 </div>
             })}
         </ul>

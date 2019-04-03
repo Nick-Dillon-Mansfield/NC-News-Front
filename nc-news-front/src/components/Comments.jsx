@@ -1,8 +1,7 @@
 import React, { Component } from 'react';
 import { fetchComments } from '../api';
 import CommentPoster from './CommentPoster'
-// import axios from 'axios';
-// import { Link } from '@reach/router';
+import DeleteButton from './DeleteButton';
 
 class Comments extends Component {
     
@@ -45,10 +44,12 @@ class Comments extends Component {
             <CommentPoster user={this.props.user} article_id={this.props.article_id} updateCommentsToDisplay={this.updateCommentsToDisplay}/>
             {comments ? 
                 comments.map(comment => {
-                    return <div key={comment.comment_id}>
+                    const {author, body, comment_id, created_at} = comment;
+                    return <div key={comment_id}>
                         --------------
-                        <p>{comment.body}</p>
-                        <h6>{comment.author}   ||   {comment.created_at} </h6>
+                        <p>{body}</p>
+                        <h6>{author}   ||   {created_at} </h6>
+                        {author === this.props.user && <DeleteButton id={comment_id} type="Comment"/>}
                     </div>
                 }) :
             <p>No comments to show! :O</p>
