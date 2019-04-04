@@ -51,12 +51,15 @@ class App extends Component {
         Articles
         </Link>
         <Router test="Testing">
+        {/* HOME (PATH WILL BE '/') */}
           <Topics path="topics" user={this.state.user}/>
           <Articles path="articles" user={this.state.user}/>
           <Articles path="topics/:topic/articles" user={this.state.user}/>
           <SingleArticle path="articles/:article_id" user={this.state.user}/>
           <TopicPostScreen path="topics/post" user={this.state.user}/>
           <ArticlePostScreen path="articles/post" user={this.state.user}/>
+          {/* <Page404 default user={this.state.user}/> */}
+
         </Router>
         <button>
           About

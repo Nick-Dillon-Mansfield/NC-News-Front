@@ -9,6 +9,7 @@ class TopicPostScreen extends Component {
         "topics": null,
         "slug": null,
         "description": null,
+        displayInvalidInput: false
     }
 
     componentDidMount() {
@@ -29,6 +30,11 @@ class TopicPostScreen extends Component {
         const {slug, description} = this.state;
         const url = 'https://ncnews-api.herokuapp.com/api/topics'
         event.preventDefault();
+        if (slug === "...") {
+            this.setState({
+                displayInvalidInput: true
+            })
+        }
         axios.post(url, {
             slug,
             description,
@@ -56,7 +62,7 @@ class TopicPostScreen extends Component {
                         Topic Description: 
                         <textarea type="text" data_key="description" onChange={this.handleChange}></textarea>
                     </label> <br/>
-
+                    {this.state.displayInvalidInput && <h4>Invalid Input: Make sure to enter a valid topic name and description!</h4>}
                     {this.props.user ? 
                         <button type="submit">Create Topic!</button> :
                         <h4>You must login before creating a topic!</h4>

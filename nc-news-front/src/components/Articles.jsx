@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import axios from 'axios';
 import { Link } from '@reach/router';
-import DeleteButton from './DeleteButton';
+import ArticleDisplayer from './ArticleDisplayer';
 
 
 class Articles extends Component {
@@ -29,26 +29,21 @@ class Articles extends Component {
         };
     };
     
-    setArticleDeleted = () => {
-        this.setState({
-            articleDeleted: true,
-        })
-    }
-
+    
     handleSortByChange = (event) => {
         const sortByURL = event.target.value
         event.preventDefault();
         axios.get(`${sortByURL}`)
-            .then(({data: {articles}}) => {
-                this.setState({
-                    articles
-                })
-            });
+        .then(({data: {articles}}) => {
+            this.setState({
+                articles
+            })
+        });
     };
-
+    
     getArticles = (url) => {
         return axios.get(url)
-          .then(({data: {articles}}) => {
+        .then(({data: {articles}}) => {
             this.setState({
                 articles,
                 topic: this.props.topic
@@ -59,24 +54,9 @@ class Articles extends Component {
     displayArticles = () => {
         const {articles, url} = this.state;
         return <ul>
-            {this.state.articleDeleted && <h3 className="deleted">Article deleted! This will disappear when you refresh the page...</h3>}
             {articles.map(article => {
-                const {title, topic, author, created_at, comment_count, article_id, votes} = article
-                return <div key={article_id}>
-                =====================
-                    <p>
-                        Title: {title} <br/>
-                        Topic: {topic} <br/>
-                        Author: {author} <br/>
-                        Published: {created_at} <br/>
-                ------
-                    </p>
-                    <h6>Votes: {votes}  ||  Comments: {comment_count}</h6>
-                    <Link to={`/articles/${article_id}`} key={`${article_id}`}>
-                        Open Article
-                    </Link><br />
-                    {author === this.props.user && <DeleteButton id={article_id} url={'localhost:3000/articles'} setArticleDeleted={this.setArticleDeleted} type="Article"/>}
-                </div>
+                const {title, topic, author, created_at, comment_count, article_id, votes} = article;
+                return <ArticleDisplayer title={title} topic={topic} author={author} created_at={created_at} comment_count={comment_count} article_id={article_id} votes={votes} user={this.props.user} />
             })}
         </ul>
     };

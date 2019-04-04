@@ -9,7 +9,6 @@ class DeleteButton extends Component {
         id: null,
         url: null,
         article_id: null,
-        deleted: false,
     }
 
     componentDidMount() {
@@ -31,14 +30,12 @@ class DeleteButton extends Component {
                 if (type === "Comment") {
                     const {setCommentDeleted} = this.props
                     setCommentDeleted();
-                    this.setState({ deleted: true });
                 } else if (type === "Article") {
-                    const {setArticleDeleted} = this.props;
-                    setArticleDeleted();
-                    this.setState({ deleted: true });
+                    const {updateArticlesToHide} = this.props;
+                    updateArticlesToHide(id)
                 } else {
                     navigate(url, {
-                        state: {articleDeleted: true} // TO FIX - DOESN'T NAVIGATE!!!
+                        state: {articleDeleted: true}
                     })
                 }
             })
@@ -51,7 +48,7 @@ class DeleteButton extends Component {
     render() {
         const {type, deleted} = this.state
         return (
-            <button disabled={deleted} onClick={this.handleClick}>Delete {type} :(</button>
+            <button onClick={this.handleClick}>Delete {type} :(</button>
         );
     };
 };

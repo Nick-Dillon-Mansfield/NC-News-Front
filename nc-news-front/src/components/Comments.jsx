@@ -48,10 +48,9 @@ class Comments extends Component {
 
     updateVotesToDisplay = (newVote, id) => {
         const updatedComments = this.state.comments.map(comment => {
-            if (comment.comment_id === id) return {...comment, votes: comment.votes+newVote} 
+            if (comment.comment_id === id) return {...comment, votes: comment.votes+newVote}
             return comment
         })
-        console.log(updatedComments)
         this.setState({
             comments: updatedComments
         })
