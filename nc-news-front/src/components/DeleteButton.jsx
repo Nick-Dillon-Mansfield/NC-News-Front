@@ -37,7 +37,11 @@ class DeleteButton extends Component {
                     setArticleDeleted();
                     this.setState({ deleted: true });
                 } else {
-                    navigate(`${url}`)
+                    console.log(deleteObj)
+                    console.log(type + " + " + url)
+                    navigate(url, {
+                        state: {articleDeleted: true} // TO FIX - DOESN'T NAVIGATE!!!
+                    })
                 }
             })
             .catch(err => {

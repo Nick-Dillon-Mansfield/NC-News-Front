@@ -48,6 +48,15 @@ export const deletePost = (type, id) => {
         })
 }
 
+export const voteOnPost = (type, id, increment) => {
+    const extraURL = type === "Comment" ? `/comments/${id}` : type === "Article" || type === "Your Article" ? `/articles/${id}` : `/error`
+        return axios.patch(baseURL + extraURL, {
+            inc_votes: increment
+        })
+        .then(({data: {updatedArticle}}) => {
+            return updatedArticle;
+        });
+};
 
 // export const fetchArticles = (url) => {
 //     return axios.get(`${url}`)

@@ -42,13 +42,13 @@ Use the generic react-project-checklist as a guide to setting up your app. Here 
 6. As a hiring partner with no access to my laptop, I should be able to use the site on my mobile without sacrificing style or functionality.
 7. **As a user, I should be able to login to the site.** - DONE 
 8. **As a hiring partner with no knowledge of the users in the database, it should be very clear to me how I can login to the site.**
-9. As a logged in user, I should be able to post a new article to an existing topic. - PARTIALLY DONE, WORKS WITH SET USERNAME (NOT FROM A LOGIN);
-10. As a logged in user, I should be able to post a new article to a new topic. 
-11. As a logged in user, I should be able to post a new comment to an existing article.
+9. As a logged in user, I should be able to post a new article to an existing topic. - DONE
+10. As a logged in user, I should be able to post a new article to a new topic. - DONE
+11. As a logged in user, I should be able to post a new comment to an existing article. - DONE
 12. **As a logged in user, I should be able to vote on an article.**
 13. **As a logged in user, I should be able to vote on a comment.**
-14. As a logged in user, I should be able to delete my own articles.
-15. As a logged in user, I should be able to delete my own comments.
+14. As a logged in user, I should be able to delete my own articles. - DONE, NEEDS TO APPEAR CLEARER (OPTIMISTIC RENDERING?)
+15. As a logged in user, I should be able to delete my own comments. - DONE, NEEDS TO APPEAR CLEARER (OPTIMISTIC RENDERING?)
 16. As a hiring parter, I should be able to follow the readme instructions to easily run the project locally.
 17. As a hiring parter, I should be able to find a link to the hosted version of the project in the readme.
 18. As a hiring parter, I should be able to find a link to the back-end repository of the project in the readme.
