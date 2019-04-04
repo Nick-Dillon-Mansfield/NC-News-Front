@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import { fetchComments, postComment } from '../api';
+import { postComment } from '../api';
 import '../index.css';
 
 class CommentPoster extends Component {
@@ -8,10 +8,6 @@ class CommentPoster extends Component {
         body: null,
         showCommentBox: false,
         comment: null,
-    }
-    
-    componentDidMount() {
-
     }
 
     toggleCommentBox = () => {
@@ -39,7 +35,6 @@ class CommentPoster extends Component {
                 comment
             })
         })
-        //optimistic rendering here
     }
 
 

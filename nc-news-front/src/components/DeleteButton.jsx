@@ -23,11 +23,11 @@ class DeleteButton extends Component {
     }
     
     handleClick = (event) => {
-        const {type, id, url, article_id} = this.state;
+        const {type, id, url} = this.state;
         event.preventDefault()
         if (window.confirm('Are you sure you want to delete this? Once you do, you cannot undo it!')) {
             deletePost(type, id)
-            .then((deleteObj) => {
+            .then(() => {
                 if (type === "Comment") {
                     const {setCommentDeleted} = this.props
                     setCommentDeleted();
@@ -37,8 +37,6 @@ class DeleteButton extends Component {
                     setArticleDeleted();
                     this.setState({ deleted: true });
                 } else {
-                    console.log(deleteObj)
-                    console.log(type + " + " + url)
                     navigate(url, {
                         state: {articleDeleted: true} // TO FIX - DOESN'T NAVIGATE!!!
                     })

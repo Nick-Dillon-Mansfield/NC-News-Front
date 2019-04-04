@@ -30,10 +30,9 @@ class VoteButtons extends Component {
         event.preventDefault();
         const {user} = this.state;
         if (user) {
-            updateVotesToDisplay(increment);
+            updateVotesToDisplay(increment, id);
             voteOnPost(type, id, increment)
-            .then(updatedArticle => {
-                console.log(event)
+            .then(() => {
                 this.setState(prevState => ({
                     opinion: prevState.opinion + increment
                 }))
