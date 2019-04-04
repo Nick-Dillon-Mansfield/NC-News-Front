@@ -29,7 +29,7 @@ class Account extends Component {
     }
 
     handleSubmit = (event) => {
-        const {user, users} = this.state;
+        const {user} = this.state;
         event.preventDefault();
         if (this.state.isExistingUser) {
             this.props.setUser(user)

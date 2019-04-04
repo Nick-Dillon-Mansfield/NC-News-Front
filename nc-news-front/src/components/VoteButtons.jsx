@@ -45,7 +45,7 @@ class VoteButtons extends Component {
     }
 
     render() {
-        const {user, displayLoginMsg, opinion} = this.state;
+        const {displayLoginMsg, opinion} = this.state;
         return <div>
             <button onClick={this.handleClick} value={1} disabled={opinion===1}>Like</button>
             <button onClick={this.handleClick} value={-1} disabled={opinion===-1}>Dislike</button>

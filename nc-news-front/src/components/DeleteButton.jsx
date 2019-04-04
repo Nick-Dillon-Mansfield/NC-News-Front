@@ -28,8 +28,8 @@ class DeleteButton extends Component {
             deletePost(type, id)
             .then(() => {
                 if (type === "Comment") {
-                    const {setCommentDeleted} = this.props
-                    setCommentDeleted();
+                    const {updateCommentsToHide} = this.props
+                    updateCommentsToHide(id);
                 } else if (type === "Article") {
                     const {updateArticlesToHide} = this.props;
                     updateArticlesToHide(id)
@@ -46,7 +46,7 @@ class DeleteButton extends Component {
     };
     
     render() {
-        const {type, deleted} = this.state
+        const {type} = this.state
         return (
             <button onClick={this.handleClick}>Delete {type} :(</button>
         );

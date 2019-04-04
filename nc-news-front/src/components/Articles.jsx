@@ -52,7 +52,7 @@ class Articles extends Component {
     };
 
     displayArticles = () => {
-        const {articles, url} = this.state;
+        const {articles} = this.state;
         return <ul>
             {articles.map(article => {
                 const {title, topic, author, created_at, comment_count, article_id, votes} = article;
