@@ -8,7 +8,8 @@ class Articles extends Component {
     state = {
         articles: null,
         topic: this.props.topic,
-        url: 'https://ncnews-api.herokuapp.com/api/articles/'
+        url: 'https://ncnews-api.herokuapp.com/api/articles/',
+        articleDeleted: false
     }
 
     componentDidMount() {
@@ -28,6 +29,12 @@ class Articles extends Component {
         };
     };
     
+    setArticleDeleted = () => {
+        this.setState({
+            articleDeleted: true,
+        })
+    }
+
     handleSortByChange = (event) => {
         const sortByURL = event.target.value
         event.preventDefault();
@@ -45,13 +52,14 @@ class Articles extends Component {
             this.setState({
                 articles,
                 topic: this.props.topic
-            })
-          })
-      };
+            });
+        });
+    };
 
     displayArticles = () => {
-        const articles = this.state.articles;
+        const {articles, url} = this.state;
         return <ul>
+            {this.state.articleDeleted && <h3 className="deleted">Article deleted! This will disappear when you refresh the page...</h3>}
             {articles.map(article => {
                 const {title, topic, author, created_at, comment_count, article_id, votes} = article
                 return <div key={article_id}>
@@ -67,7 +75,7 @@ class Articles extends Component {
                     <Link to={`/articles/${article_id}`} key={`${article_id}`}>
                         Open Article
                     </Link><br />
-                    {author === this.props.user && <DeleteButton id={article_id} type="Article"/>}
+                    {author === this.props.user && <DeleteButton id={article_id} url={'localhost:3000/articles'} setArticleDeleted={this.setArticleDeleted} type="Article"/>}
                 </div>
             })}
         </ul>

@@ -24,6 +24,9 @@ code {
 
 .newComment{
   border-style: groove;
-  border-color: gold;
-  
+  border-color: gold; 
+}
+
+.deleted{
+  color: red
 }

@@ -47,7 +47,6 @@ class Topics extends Component {
     
     render() {
         const topicCount = this.state.topics ? this.state.topics.length : 0;
-        console.log(this.props.location)
         return (
             <div>
                 <h3>Topics</h3>
