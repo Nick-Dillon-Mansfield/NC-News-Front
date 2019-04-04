@@ -32,11 +32,16 @@ class DeleteButton extends Component {
                     const {setCommentDeleted} = this.props
                     setCommentDeleted();
                     this.setState({ deleted: true });
-                } else {
+                } else if (type === "Article") {
                     const {setArticleDeleted} = this.props;
                     setArticleDeleted();
-                    this.setState({ deleted: true });  
-                };
+                    this.setState({ deleted: true });
+                } else {
+                    navigate(`${url}`)
+                }
+            })
+            .catch(err => {
+                console.dir(err)
             });
         };
     };

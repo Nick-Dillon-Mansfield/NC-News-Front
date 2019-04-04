@@ -41,7 +41,7 @@ export const postComment = (user, body, article_id) => {
 }
 
 export const deletePost = (type, id) => {
-    const extraURL = type === "Comment" ? `/comments/${id}` : type === "Article" ? `/articles/${id}` : `/error`
+    const extraURL = type === "Comment" ? `/comments/${id}` : type === "Article" || type === "Your Article" ? `/articles/${id}` : `/error`
     return axios.delete(`${baseURL}${extraURL}`)
         .then((deleteObj) => {
             return deleteObj

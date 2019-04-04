@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import Comments from './Comments';
 import "../index.css";
 import {fetchSingleArticle} from '../api'
+import DeleteButton from './DeleteButton'
 
 class SingleArticle extends Component {
     state = {
@@ -26,7 +27,7 @@ class SingleArticle extends Component {
     }
 
     render(){
-        const {author, body, comment_count, created_at, title, topic, votes} = this.state.article ? this.state.article : '';
+        const {author, body, comment_count, created_at, title, topic, votes, article_id} = this.state.article ? this.state.article : '';
         if (this.state.article) 
         return ( 
             <div>
@@ -36,6 +37,7 @@ class SingleArticle extends Component {
             <p>{body}</p>
             <h6>Posted to '{topic}' on {created_at}</h6>
             <h4>Votes: {votes}</h4> <br/>
+            {author === this.props.user && <DeleteButton id={article_id} url={'localhost:3000/articles'} type="Your Article"/>}
             <h4>Comments: {comment_count}</h4> <br/>
             <button onClick={this.handleClick}>Show/Hide Comments</button>
             {this.state.showComments && <Comments user={this.props.user} article_id={this.props.article_id}/>}
