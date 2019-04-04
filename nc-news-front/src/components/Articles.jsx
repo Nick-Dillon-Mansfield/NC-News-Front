@@ -9,7 +9,8 @@ class Articles extends Component {
         articles: null,
         topic: this.props.topic,
         url: 'https://ncnews-api.herokuapp.com/api/articles/',
-        articleDeleted: false
+        articleDeleted: false,
+        articleCount: 0
     }
 
     componentDidMount() {
@@ -46,7 +47,8 @@ class Articles extends Component {
         .then(({data: {articles}}) => {
             this.setState({
                 articles,
-                topic: this.props.topic
+                topic: this.props.topic,
+                articleCount: articles.length
             });
         });
     };
@@ -56,10 +58,16 @@ class Articles extends Component {
         return <ul>
             {articles.map(article => {
                 const {title, topic, author, created_at, comment_count, article_id, votes} = article;
-                return <ArticleDisplayer title={title} topic={topic} author={author} created_at={created_at} comment_count={comment_count} article_id={article_id} votes={votes} user={this.props.user} />
+                return <ArticleDisplayer title={title} topic={topic} author={author} created_at={created_at} comment_count={comment_count} article_id={article_id} votes={votes} user={this.props.user} updateArticleCounter={this.updateArticleCounter}/>
             })}
         </ul>
     };
+
+    updateArticleCounter = (newArticleCount) => {
+        this.setState(prevState => ({
+            articleCount: +prevState.articleCount + +newArticleCount
+        }))
+    }
 
     render() {
         const articleCount = this.state.articles ? this.state.articles.length : 0;
@@ -71,7 +79,7 @@ class Articles extends Component {
                 <h3>Articles</h3>
                 <h4>Displaying {articleCount} article(s) {subject}!</h4>
                 {this.props.user ? 
-                    <Link to="/articles/post" key='articles/post'>
+                    <Link to="/articles/post" key='articles/post' >
                         Post Article!
                     </Link> :
                     <h4>

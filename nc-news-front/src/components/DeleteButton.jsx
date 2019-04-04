@@ -28,11 +28,13 @@ class DeleteButton extends Component {
             deletePost(type, id)
             .then(() => {
                 if (type === "Comment") {
-                    const {updateCommentsToHide} = this.props
+                    const {updateCommentsToHide, updateCommentCounter} = this.props
                     updateCommentsToHide(id);
+                    updateCommentCounter(-1)
                 } else if (type === "Article") {
-                    const {updateArticlesToHide} = this.props;
+                    const {updateArticlesToHide, updateArticleCounter} = this.props;
                     updateArticlesToHide(id)
+                    updateArticleCounter(-1)
                 } else {
                     navigate(url, {
                         state: {articleDeleted: true}

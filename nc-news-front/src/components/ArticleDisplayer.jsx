@@ -22,7 +22,7 @@ class ArticleDisplayer extends Component {
     }
 
     render() {
-        const {title, topic, author, created_at, comment_count, article_id, votes, } = this.props;
+        const {title, topic, author, created_at, comment_count, article_id, votes, updateArticleCounter} = this.props;
         if (this.state.articlesToHide.includes(article_id)) {
             return <div>
                     <h3 className="deleted">Article deleted!</h3>
@@ -41,7 +41,7 @@ class ArticleDisplayer extends Component {
             <Link to={`/articles/${article_id}`} key={`${article_id}`}>
                 Open Article
             </Link><br />
-            {author === this.props.user && <DeleteButton id={article_id} url={'localhost:3000/articles'} updateArticlesToHide={this.updateArticlesToHide} type="Article"/>}
+            {author === this.props.user && <DeleteButton id={article_id} url={'localhost:3000/articles'} updateArticlesToHide={this.updateArticlesToHide} updateArticleCounter={updateArticleCounter} type="Article"/>}
         </div>
     }
 }

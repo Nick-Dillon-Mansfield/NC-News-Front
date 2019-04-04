@@ -9,15 +9,18 @@ class SingleArticle extends Component {
     state = {
         article: null,
         showComments: false,
-        votes: 0
+        votes: 0,
+        comments: 0
     }
     
     componentDidMount() {
         fetchSingleArticle(this.props.article_id)
             .then((article) => {
+                console.log(article.comment_count)
                 this.setState({
                     article,
-                    votes: article.votes
+                    votes: article.votes,
+                    comments: article.comment_count
                 })
             })
     }
@@ -35,9 +38,15 @@ class SingleArticle extends Component {
             votes: +prevState.votes + +newVote
         }))
     }
+    
+    updateCommentCounter = (newCommentCount) => {
+            this.setState(prevState => ({
+            comments: +prevState.comments + +newCommentCount
+        }))
+    }
 
     render(){
-        const {author, body, comment_count, created_at, title, topic, article_id} = this.state.article ? this.state.article : '';
+        const {author, body, created_at, title, topic, article_id} = this.state.article ? this.state.article : '';
         if (this.state.article) 
         return ( 
             <div>
@@ -49,9 +58,9 @@ class SingleArticle extends Component {
             <h4>Votes: {this.state.votes}</h4> <br/>
             <VoteButtons user={this.props.user} type="Your Article" id={article_id} updateVotesToDisplay={this.updateVotesToDisplay}/>
             {author === this.props.user && <DeleteButton id={article_id} url='/articles' type="Your Article"/>}
-            <h4>Comments: {comment_count}</h4> <br/>
+            <h4>Comments: {this.state.comments}</h4> <br/>
             <button onClick={this.handleClick}>Show/Hide Comments</button>
-            {this.state.showComments && <Comments user={this.props.user} article_id={this.props.article_id}/>}
+            {this.state.showComments && <Comments updateCommentCounter={this.updateCommentCounter} user={this.props.user} article_id={this.props.article_id}/>}
         </div>
         ) 
         else {

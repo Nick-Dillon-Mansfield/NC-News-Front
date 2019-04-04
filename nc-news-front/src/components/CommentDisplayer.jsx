@@ -34,7 +34,7 @@ class ArticleDisplayer extends Component {
             <p>{body}</p>
             <h6>{author}   ||   {created_at}   ||   Votes: {votes}</h6>
             <VoteButtons user={this.props.user} type="Comment" id={comment_id} updateVotesToDisplay={updateVotesToDisplay}/>
-            {author === user && <DeleteButton article_id={this.props.article_id} id={comment_id} updateCommentsToHide={this.updateCommentsToHide} type="Comment" url={url}/>}
+            {author === user && <DeleteButton updateCommentCounter={this.props.updateCommentCounter} article_id={this.props.article_id} id={comment_id} updateCommentsToHide={this.updateCommentsToHide} type="Comment" url={url}/>}
         </div>
     }
 }
