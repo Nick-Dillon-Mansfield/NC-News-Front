@@ -1,13 +1,36 @@
 .App {
   text-align: center;
+  /* display: grid; */
+  grid-template-columns: 1fr 2fr;
+  grid-template-rows: 75px auto;
+  grid-template-areas: 
+  "topleft topRight"
+  "navBar content"
+/* }
+  
+.title{
+  grid-area: topLeft;
+  border-style: groove;
+  border-color: green;
+  /* border-width: 10px; */
+}
+/* 
+.login{
+  grid-area: topRight;
+  border-style: solid;
+  border-color: green;
+  align-items: center;
+  justify-content: center;
+} */
+
+/* .navBar{
+  grid-area: navBar;
+  align-items: center;
+  justify-content: center;
 }
 
-.topBar{
-  display: grid;
-  grid-template-columns: 2fr 1fr 1fr;
-  /* grid-template-rows: auto auto; */
-}
-
-.NavBar {
-  background-color: aqua;
-}
+.content{
+  grid-area: content;
+  align-items: center;
+  justify-content: center;
+} */

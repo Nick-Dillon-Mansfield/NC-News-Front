@@ -50,7 +50,6 @@ class SingleArticle extends Component {
     }
 
     render(){
-        console.log(this.props)
         const {author, body, created_at, title, topic, article_id} = this.state.article ? this.state.article : '';
         if (this.state.article) 
         return ( 

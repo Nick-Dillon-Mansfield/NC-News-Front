@@ -41,7 +41,7 @@ class ArticleDisplayer extends Component {
             <Link to={`/articles/${article_id}`} key={`${article_id}`}>
                 Open Article
             </Link><br />
-            {author === this.props.user && <DeleteButton id={article_id} url={'localhost:3000/articles'} updateArticlesToHide={this.updateArticlesToHide} updateArticleCounter={updateArticleCounter} type="Article"/>}
+            {author === this.props.user && <DeleteButton id={article_id} url={'/articles'} updateArticlesToHide={this.updateArticlesToHide} updateArticleCounter={updateArticleCounter} type="Article"/>}
         </div>
     }
 }

@@ -28,7 +28,7 @@ class ArticleDisplayer extends Component {
                     <h3 className="deleted">Comment deleted!</h3>
                 </div>
         }
-        const url = `http://localhost:3000/articles/`
+        const url = `/articles`
         return <div key={comment_id}>
             --------------
             <p>{body}</p>
