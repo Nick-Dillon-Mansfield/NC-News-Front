@@ -30,6 +30,18 @@ export const fetchSingleArticle = (article_id) => {
         })
 }
 
+export const postTopic = (slug, description) => {
+    return axios.post(`${baseURL}/topics`, {slug, description})
+        .then(({data: {topic}}) => {
+            console.log('posted the topic')
+            return topic
+        })
+        .catch(err => {
+            console.log(err.response.data.message);
+            throw(err);
+        })
+}
+
 export const postComment = (user, body, article_id) => {
     return axios.post(`${baseURL}/articles/${article_id}/comments`, {
         username: user,

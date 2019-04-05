@@ -3,8 +3,6 @@ import axios from 'axios';
 import { Link, navigate } from '@reach/router';
 import { fetchTopics } from '../api';
 import ArticleDisplayer from './ArticleDisplayer';
-import Page404 from './Page404';
-
 
 class Articles extends Component {
     state = {

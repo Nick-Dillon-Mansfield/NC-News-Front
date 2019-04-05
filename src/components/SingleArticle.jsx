@@ -5,7 +5,6 @@ import "../index.css";
 import {fetchSingleArticle} from '../api'
 import DeleteButton from './DeleteButton'
 import VoteButtons from './VoteButtons'
-import Page404 from './Page404'
 
 class SingleArticle extends Component {
     state = {

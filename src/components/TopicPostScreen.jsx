@@ -1,7 +1,6 @@
 import React, {Component} from 'react';
-import axios from 'axios';
 import { navigate } from '@reach/router';
-import { fetchTopics } from '../api';
+import { fetchTopics, postTopic } from '../api';
 
 class TopicPostScreen extends Component {
 
@@ -9,7 +8,8 @@ class TopicPostScreen extends Component {
         "topics": null,
         "slug": null,
         "description": null,
-        displayInvalidInput: false
+        displayInvalidInput: false,
+        errorMessage: null,
     }
 
     componentDidMount() {
@@ -28,23 +28,21 @@ class TopicPostScreen extends Component {
 
     handleSubmit = (event) => {
         const {slug, description} = this.state;
-        const url = 'https://ncnews-api.herokuapp.com/api/topics'
         event.preventDefault();
-        if (slug === "...") {
-            this.setState({
-                displayInvalidInput: true
+            postTopic(slug, description)
+            .then((res) => {
+                console.log('going here...')
+                navigate(`/topics`, {
+                    state: {newTopic: true}
+                })
             })
-        }
-        axios.post(url, {
-            slug,
-            description,
-        })
-        .then((res) => {
-            navigate(`/topics`, {
-                state: {newTopic: true}
+            .catch(err => {
+                console.log(err)
+                this.setState({
+                    displayInvalidInput: true,
+                    errorMessage: err.response.data.message,
+                })
             })
-        })
-        .catch(err => {console.log(err)})
     }
 
     render() {
@@ -62,7 +60,7 @@ class TopicPostScreen extends Component {
                         Topic Description: 
                         <textarea type="text" data_key="description" onChange={this.handleChange}></textarea>
                     </label> <br/>
-                    {this.state.displayInvalidInput && <h4>Invalid Input: Make sure to enter a valid topic name and description!</h4>}
+                    {this.state.displayInvalidInput && <h4>{this.state.errorMessage}</h4>}
                     {this.props.user ? 
                         <button type="submit">Create Topic!</button> :
                         <h4>You must login before creating a topic!</h4>
