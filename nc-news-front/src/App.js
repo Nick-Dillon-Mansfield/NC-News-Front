@@ -11,6 +11,7 @@ import Articles from './components/Articles';
 import SingleArticle from './components/SingleArticle'
 import ArticlePostScreen from './components/ArticlePostScreen'
 import TopicPostScreen from './components/TopicPostScreen'
+import Page404 from './components/Page404'
 
 
 class App extends Component {
@@ -37,7 +38,6 @@ class App extends Component {
   }
 
   render() {
-    console.log('APP PAGE - logged in as ' + this.state.user)
     return (
       <div className="App">
         <div className="topBar">
@@ -58,8 +58,7 @@ class App extends Component {
           <SingleArticle path="articles/:article_id" user={this.state.user}/>
           <TopicPostScreen path="topics/post" user={this.state.user}/>
           <ArticlePostScreen path="articles/post" user={this.state.user}/>
-          {/* <Page404 default user={this.state.user}/> */}
-
+          <Page404 default user={this.state.user}/>
         </Router>
         <button>
           About

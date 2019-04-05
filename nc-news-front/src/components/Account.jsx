@@ -54,13 +54,13 @@ class Account extends Component {
     
     render() {
         return (
-            <div>
+            <div className="NavBar">
                 {this.props.user ? 
                 <button type="submit" onClick={this.handleLogout}>Log out!</button> : 
                 <form>
                     <label>
                         Username: 
-                        <input type="text" data_key="user" onChange={this.handleChange}></input>
+                        <input type="text" data_key="user" onChange={this.handleChange} placeholder="e.g. tickle122"></input>
                         <button type="submit" onClick={this.handleSubmit}>Login!</button>
                     </label>
                 </form>

@@ -7,7 +7,7 @@ export const fetchTopics = () => {
         .then(({ data: {topics} }) => {
             return topics;
         })
-}
+};
 
 export const fetchUsers = () => {
     return axios.get(`${baseURL}/users`)

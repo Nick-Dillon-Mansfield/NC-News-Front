@@ -1,9 +1,11 @@
 import React, { Component } from 'react';
+import {navigate} from '@reach/router'
 import Comments from './Comments';
 import "../index.css";
 import {fetchSingleArticle} from '../api'
 import DeleteButton from './DeleteButton'
 import VoteButtons from './VoteButtons'
+import Page404 from './Page404'
 
 class SingleArticle extends Component {
     state = {
@@ -16,13 +18,15 @@ class SingleArticle extends Component {
     componentDidMount() {
         fetchSingleArticle(this.props.article_id)
             .then((article) => {
-                console.log(article.comment_count)
                 this.setState({
                     article,
                     votes: article.votes,
                     comments: article.comment_count
                 })
             })
+            .catch(err => {
+                navigate('/Page404')
+            }) 
     }
 
 
@@ -46,6 +50,7 @@ class SingleArticle extends Component {
     }
 
     render(){
+        console.log(this.props)
         const {author, body, created_at, title, topic, article_id} = this.state.article ? this.state.article : '';
         if (this.state.article) 
         return ( 

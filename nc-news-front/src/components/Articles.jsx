@@ -1,7 +1,9 @@
 import React, { Component } from 'react';
 import axios from 'axios';
-import { Link } from '@reach/router';
+import { Link, navigate } from '@reach/router';
+import { fetchTopics } from '../api';
 import ArticleDisplayer from './ArticleDisplayer';
+import Page404 from './Page404';
 
 
 class Articles extends Component {
@@ -15,7 +17,15 @@ class Articles extends Component {
 
     componentDidMount() {
         let url = this.state.url
-        if (this.props.topic) url+=`?topic=${this.props.topic}` 
+        if (this.props.topic) {
+            fetchTopics()
+            .then((topics) => {
+                if (topics.every(topic => {
+                    return topic.slug !== this.props.topic
+                })) {navigate('/Page404')}
+            })
+            url+=`?topic=${this.props.topic}`
+        } 
         this.getArticles(url);
     };
     
@@ -77,7 +87,7 @@ class Articles extends Component {
         return (
             <div>
                 <h3>Articles</h3>
-                <h4>Displaying {articleCount} article(s) {subject}!</h4>
+                {articleCount > 0 ? <h4>Displaying {articleCount} article(s) {subject}!</h4> : <h4>Looks like there are no articles about {subject}! Why don't you post one?</h4>}
                 {this.props.user ? 
                     <Link to="/articles/post" key='articles/post' >
                         Post Article!
