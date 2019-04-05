@@ -10,7 +10,7 @@ If you would like to clone the repo, either download the ZIP file directly from 
 git clone https://github.com/Nick-Dillon/NC-News-Front.git
 ```
 
-
+You can view a hosted version of the website here: https://nick-dillons-nc-news.netlify.com/
 
 ## Usage
 
