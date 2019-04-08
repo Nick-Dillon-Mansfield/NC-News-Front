@@ -9,6 +9,16 @@ export const fetchTopics = () => {
         })
 };
 
+export const fetchArticles = (url) => {
+    return axios.get(`${url}`)
+        .then(({data: {articles}}) => {
+            return articles;
+        })
+        .catch(err => {
+            throw(err)
+        })
+}
+
 export const fetchUsers = () => {
     return axios.get(`${baseURL}/users`)
         .then(({ data: {users} }) => {
@@ -33,13 +43,23 @@ export const fetchSingleArticle = (article_id) => {
 export const postTopic = (slug, description) => {
     return axios.post(`${baseURL}/topics`, {slug, description})
         .then(({data: {topic}}) => {
-            console.log('posted the topic')
             return topic
         })
         .catch(err => {
-            console.log(err.response.data.message);
             throw(err);
         })
+}
+
+export const postArticle = (article) => {
+    console.log(article);
+    return axios.post(`${baseURL}/articles`, article)
+    .then(({data: {createdArticle}}) => {
+        return createdArticle;
+    })
+    .catch((err) => {
+        console.log('here')
+        throw(err);
+    })
 }
 
 export const postComment = (user, body, article_id) => {
@@ -70,14 +90,6 @@ export const voteOnPost = (type, id, increment) => {
         });
 };
 
-export const fetchArticles = (url) => {
-    return axios.get(`${url}`)
-        .then(({data: {articles}}) => {
-            return articles;
-        })
-        .catch(err => {
-            throw(err)
-        })
-}
+
 
 

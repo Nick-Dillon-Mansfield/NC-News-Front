@@ -62,7 +62,7 @@ class SingleArticle extends Component {
             <VoteButtons user={this.props.user} type="Your Article" id={article_id} updateVotesToDisplay={this.updateVotesToDisplay}/>
             {author === this.props.user && <DeleteButton id={article_id} url='/articles' type="Your Article"/>}
             <h4>Comments: {this.state.comments}</h4> <br/>
-            <button onClick={this.handleClick}>Show/Hide Comments</button>
+            {this.state.comments > 0 ? <button onClick={this.handleClick}>Show/Hide Comments Section</button> : null}
             {this.state.showComments && <Comments updateCommentCounter={this.updateCommentCounter} user={this.props.user} article_id={this.props.article_id}/>}
         </div>
         ) 

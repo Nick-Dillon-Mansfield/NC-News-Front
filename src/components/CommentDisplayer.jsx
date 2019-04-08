@@ -22,7 +22,8 @@ class ArticleDisplayer extends Component {
     }
 
     render() {
-        const {user, author, body, comment_id, created_at, votes, updateVotesToDisplay} = this.props;
+        const {user, author, body, comment_id, created_at, votes} = this.props.comment;
+        const {updateVotesToDisplay} = this.props;
         if (this.state.commentsToHide.includes(comment_id)) {
             return <div>
                     <h3 className="deleted">Comment deleted!</h3>

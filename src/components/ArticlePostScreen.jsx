@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import {fetchTopics} from '../api'
+import {fetchTopics, postArticle} from '../api'
 import axios from 'axios';
 import {Link, navigate} from '@reach/router'
 
@@ -10,6 +10,7 @@ class ArticlePostScreen extends Component {
         "topic": null,
         "title": null,
         "body": null,
+        missingInfo: false,
     }
 
     componentDidMount() {
@@ -27,20 +28,20 @@ class ArticlePostScreen extends Component {
     }
 
     handleSubmit = (event) => {
-        const {topic, title, body} = this.state
-        const username = this.props.user
-        const url = 'https://ncnews-api.herokuapp.com/api/articles'
+        const {topic, title, body} = this.state;
+        const username = this.props.user;
         event.preventDefault();
-        axios.post(url, {
-            title,
-            topic,
-            body,
-            username
-        })
-        .then(({data: {createdArticle}}) => {
+        if (topic === "" || title === "" || body === "") {
+            this.setState({missingInfo: true})
+        }
+        else postArticle({title, topic, body, username})
+        .then((createdArticle) => {
             navigate(`/articles/${createdArticle.article_id}`, {
                 state: {newArticle: true}
             })
+        })
+        .catch(err => {
+            this.setState({missingInfo: true})
         })
     }
 
@@ -75,6 +76,7 @@ class ArticlePostScreen extends Component {
                         <button type="submit">Post article!</button> :
                         <h4>You must login before posting!</h4>
                     }
+                    {this.state.missingInfo && <h4>Oops! Looks like you are missing something... check you've entered all fields, including the topic!</h4>}
                 </form>
             </div>
         )

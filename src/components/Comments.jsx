@@ -54,11 +54,9 @@ class Comments extends Component {
         return (
             <div>
             <CommentPoster user={this.props.user} article_id={this.props.article_id} updateCommentsToDisplay={this.updateCommentsToDisplay} updateCommentCounter={this.props.updateCommentCounter}/>
-            {this.state.commentDeleted && <h3 className="deleted">Comment deleted! This will disappear when you refresh the page...</h3>}
             {comments ? 
                 comments.map(comment => {
-                    const {author, body, comment_id, created_at, votes} = comment;
-                    return <CommentDisplayer updateCommentCounter={this.props.updateCommentCounter} updateVotesToDisplay={this.updateVotesToDisplay} user={this.props.user} article_id={this.props.article_id} author={author} body={body} comment_id={comment_id} created_at={created_at} votes={votes} />
+                    return <CommentDisplayer key={comment.comment_id} updateCommentCounter={this.props.updateCommentCounter} updateVotesToDisplay={this.updateVotesToDisplay} comment={comment} />
                 }) :
             <p>No comments to show! :O</p>
             }
