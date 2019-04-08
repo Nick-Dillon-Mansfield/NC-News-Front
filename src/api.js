@@ -75,6 +75,9 @@ export const fetchArticles = (url) => {
         .then(({data: {articles}}) => {
             return articles;
         })
+        .catch(err => {
+            throw(err)
+        })
 }
 
 

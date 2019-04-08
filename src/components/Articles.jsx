@@ -25,7 +25,13 @@ class Articles extends Component {
         } 
         fetchArticles(url)
         .then(articles => {
-            this.setState({articles})
+            this.setState({
+                articles,
+                articleCount: articles.length,
+            })
+        })
+        .catch(err => {
+            if (err.response.status === 404) this.setState({articleCount: 0})
         });
     };
     
@@ -72,7 +78,7 @@ class Articles extends Component {
     }
 
     render() {
-        const articleCount = this.state.articles ? this.state.articles.length : 0;
+        const articleCount = this.state.articleCount ? this.state.articles.length : 0;
         const subject = this.state.topic ? `about ${this.state.topic}` : ""
         const subjectURL = this.state.topic ? `topic=${this.state.topic}&` : ""
         const sortByURL = this.state.url + '?' + subjectURL + "sort_by=";
@@ -88,7 +94,7 @@ class Articles extends Component {
                         Login to post an article!
                     </h4>
                 }
-                <form>
+                {this.state.articleCount ? <form>
                     <select onChange={this.handleSortByChange}>
                         <option value={`${sortByURL}created_at&order=desc`}>Date (newest to oldest)</option>
                         <option value={`${sortByURL}created_at&order=asc`} >Date (oldest to newest)</option>
@@ -97,7 +103,7 @@ class Articles extends Component {
                         <option value={`${sortByURL}votes&order=desc`}>Votes (most to fewest)</option>
                         <option value={`${sortByURL}votes&order=asc`} >Votes (fewest to most)</option>
                     </select>
-                </form>
+                </form> : null}
                 {this.state.articles && this.displayArticles()}
             </div>
         )
