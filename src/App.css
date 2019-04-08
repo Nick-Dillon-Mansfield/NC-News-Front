@@ -1,27 +1,31 @@
 .App {
   text-align: center;
-  /* display: grid; */
+  display: grid;
   grid-template-columns: 1fr 2fr;
   grid-template-rows: 75px auto;
   grid-template-areas: 
-  "topleft topRight"
-  "navBar content"
-/* }
-  
-.title{
-  grid-area: topLeft;
+  "top top"
+  "left middleRight"
+  "left bottomRight"
+}
+
+.topBar{
+  grid-area: top;
+  display: flex;
+  justify-content: space-between;
   border-style: groove;
   border-color: green;
-  /* border-width: 10px; */
+  border-width: 10px;
 }
-/* 
-.login{
-  grid-area: topRight;
-  border-style: solid;
-  border-color: green;
-  align-items: center;
+
+.header{
+  flex-grow: 1;
+}
+
+.account{
+  flex-grow: 1;
   justify-content: center;
-} */
+}
 
 /* .navBar{
   grid-area: navBar;

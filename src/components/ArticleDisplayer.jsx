@@ -25,7 +25,7 @@ class ArticleDisplayer extends Component {
         const {title, topic, author, created_at, comment_count, article_id, votes, updateArticleCounter} = this.props;
         if (this.state.articlesToHide.includes(article_id)) {
             return <div>
-                    <h3 className="deleted">Article deleted!</h3>
+                    <h3 className="deleted">Article deleted :O</h3>
                 </div>
         }
         return <div key={article_id}>

@@ -37,7 +37,7 @@ class Topics extends Component {
                             Description: {topic.description}
                         </p>
                         <Link to={`/topics/${topic.slug}/articles`} key={`articles?topic=${topic.slug}`} >
-                        All article(s) about {topic.slug}!
+                        All article(s) about {topic.slug}
                         </Link>
                     </div>
                 )
@@ -52,14 +52,14 @@ class Topics extends Component {
                 <h3>Topics</h3>
                 {this.props.user ? 
                     <Link to="/topics/post" key="topics/post">
-                        Create Topic!
+                        Create Topic
                     </Link> : 
                     <h4>
                         Login to create a topic!
                     </h4>
                 }
-                {this.props.location.state && this.props.location.state.newTopic && <p className="newPost">Thank you for posting a new topic!</p>}
-                <h4>Displaying {topicCount} topics!</h4>
+                {this.props.location.state && this.props.location.state.newTopic && <p className="newPost">Thank you for posting a new topic :)</p>}
+                <h4>Displaying {topicCount} topics</h4>
                 {this.state.topics && this.displayTopics()}
             </div>
         )

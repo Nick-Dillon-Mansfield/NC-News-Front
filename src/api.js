@@ -70,11 +70,11 @@ export const voteOnPost = (type, id, increment) => {
         });
 };
 
-// export const fetchArticles = (url) => {
-//     return axios.get(`${url}`)
-//         .then(({data: {articles}}) => {
-//             return articles;
-//         })
-// }
+export const fetchArticles = (url) => {
+    return axios.get(`${url}`)
+        .then(({data: {articles}}) => {
+            return articles;
+        })
+}
 
 

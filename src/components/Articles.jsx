@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
-import axios from 'axios';
 import { Link, navigate } from '@reach/router';
-import { fetchTopics } from '../api';
+import { fetchTopics, fetchArticles } from '../api';
 import ArticleDisplayer from './ArticleDisplayer';
 
 class Articles extends Component {
@@ -24,7 +23,10 @@ class Articles extends Component {
             })
             url+=`?topic=${this.props.topic}`
         } 
-        this.getArticles(url);
+        fetchArticles(url)
+        .then(articles => {
+            this.setState({articles})
+        });
     };
     
     componentDidUpdate(prevProps, prevState) {
@@ -34,7 +36,10 @@ class Articles extends Component {
         if (prevState.topic !== this.props.topic) {
             let url = this.state.url
             if (this.props.topic) url+=`?topic=${this.props.topic}` 
-            this.getArticles(url)
+            fetchArticles(url)
+            .then(articles => {
+                this.setState({articles})
+            })
         };
     };
     
@@ -42,22 +47,11 @@ class Articles extends Component {
     handleSortByChange = (event) => {
         const sortByURL = event.target.value
         event.preventDefault();
-        axios.get(`${sortByURL}`)
-        .then(({data: {articles}}) => {
+        fetchArticles(`${sortByURL}`)
+        .then((articles) => {
             this.setState({
                 articles
             })
-        });
-    };
-    
-    getArticles = (url) => {
-        return axios.get(url)
-        .then(({data: {articles}}) => {
-            this.setState({
-                articles,
-                topic: this.props.topic,
-                articleCount: articles.length
-            });
         });
     };
 
@@ -66,7 +60,7 @@ class Articles extends Component {
         return <ul>
             {articles.map(article => {
                 const {title, topic, author, created_at, comment_count, article_id, votes} = article;
-                return <ArticleDisplayer title={title} topic={topic} author={author} created_at={created_at} comment_count={comment_count} article_id={article_id} votes={votes} user={this.props.user} updateArticleCounter={this.updateArticleCounter}/>
+                return <ArticleDisplayer key={article_id} title={title} topic={topic} author={author} created_at={created_at} comment_count={comment_count} article_id={article_id} votes={votes} user={this.props.user} updateArticleCounter={this.updateArticleCounter}/>
             })}
         </ul>
     };
@@ -85,10 +79,10 @@ class Articles extends Component {
         return (
             <div>
                 <h3>Articles</h3>
-                {articleCount > 0 ? <h4>Displaying {articleCount} article(s) {subject}!</h4> : <h4>Looks like there are no articles about {subject}! Why don't you post one?</h4>}
+                {articleCount > 0 ? <h4>Displaying {articleCount} article(s) {subject}</h4> : <h4>Looks like there are no articles about {subject}! Why don't you post one?</h4>}
                 {this.props.user ? 
                     <Link to="/articles/post" key='articles/post' >
-                        Post Article!
+                        Post Article
                     </Link> :
                     <h4>
                         Login to post an article!

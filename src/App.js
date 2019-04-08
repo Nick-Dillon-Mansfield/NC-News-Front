@@ -34,9 +34,13 @@ class App extends Component {
   render() {
     return (
       <div className="App">
-        <div >
+        <div className="topBar">
+          <div className="header">
           <Header user={this.state.user} className='title'/>
+          </div>
+          <div className="account">
           <Account user={this.state.user} setUser={this.setUser} className='login'/>
+          </div>
         </div>
         <div className='navBar'>
         <Link to="/" key="home" > Home </Link>
