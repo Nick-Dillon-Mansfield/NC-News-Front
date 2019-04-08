@@ -1,6 +1,5 @@
 import React, {Component} from 'react';
 import {fetchTopics, postArticle} from '../api'
-import axios from 'axios';
 import {Link, navigate} from '@reach/router'
 
 class ArticlePostScreen extends Component {

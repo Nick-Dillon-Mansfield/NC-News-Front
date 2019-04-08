@@ -32,35 +32,38 @@ class App extends Component {
   }
 
   render() {
+    const {user} = this.state;
     return (
       <div className="App">
         <div className="topBar">
           <div className="header">
-          <Header user={this.state.user} className='title'/>
+          <Header user={user} className="title"/>
           </div>
           <div className="account">
-          <Account user={this.state.user} setUser={this.setUser} className='login'/>
+          <Account user={user} setUser={this.setUser} className='login'/>
           </div>
         </div>
         <div className='navBar'>
-        <Link to="/" key="home" > Home </Link>
-        <Link to="topics" key="topics" > Topics </Link>
-        <Link to="articles" key="articles" > Articles </Link>
-        <Link to="about" key="about"> About </Link>
-        <Link to="help" key="help"> Help </Link>
+        <Link to="/" key="home" className="home"> Home </Link> <br/>
+        <Link to="topics" key="topics" className="topics"> Topics </Link> <br/>
+        <Link to="articles" key="articles" className="articles"> Articles </Link> <br/>
+        <Link to="about" key="about" className="about"> About </Link> <br/>
+        <Link to="help" key="help" className="help"> Help </Link>
         </div>
+        <div className="content">
         <Router>
           <Home default />
-          <Topics path="topics" user={this.state.user}/>
-          <Articles path="articles" user={this.state.user}/>
+          <Topics path="topics" user={user}/>
+          <Articles path="articles" user={user}/>
           <Help path="help" />
           <About path="about" />
-          <Articles path="topics/:topic/articles" user={this.state.user}/>
-          <SingleArticle path="articles/:article_id" user={this.state.user}/>
-          <TopicPostScreen path="topics/post" user={this.state.user}/>
-          <ArticlePostScreen path="articles/post" user={this.state.user}/>
-          <Page404 path='/Page404' user={this.state.user}/>
+          <Articles path="topics/:topic/articles" user={user}/>
+          <SingleArticle path="articles/:article_id" user={user}/>
+          <TopicPostScreen path="topics/post" user={user}/>
+          <ArticlePostScreen path="articles/post" user={user}/>
+          <Page404 path='/Page404' user={user}/>
         </Router>
+        </div>
       </div>
     );
   }

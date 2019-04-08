@@ -1,40 +1,62 @@
 .App {
   text-align: center;
   display: grid;
-  grid-template-columns: 1fr 2fr;
-  grid-template-rows: 75px auto;
+  grid-template-columns: 100px auto;
+  grid-template-rows: 120px auto;
   grid-template-areas: 
   "top top"
-  "left middleRight"
-  "left bottomRight"
+  "left right"
+  "left right";
 }
 
 .topBar{
   grid-area: top;
-  display: flex;
+  grid-row-end: 1;
+  display: grid;
+  grid-template-areas: "left right";
+ 
+  position: fixed;
+  
   justify-content: space-between;
-  border-style: groove;
+
+  padding: 10px;
+  width: 100%;
+
+  border-style: solid;
   border-color: green;
   border-width: 10px;
 }
 
 .header{
-  flex-grow: 1;
+  grid-area: left;
+  align-self: center;
 }
 
 .account{
-  flex-grow: 1;
+  grid-area: right;
   justify-content: center;
+  align-self: center;
+  margin-right: 40px;
 }
 
-/* .navBar{
-  grid-area: navBar;
+.navBar{
+  grid-area: 2 / 1 / span 2 / span 1;
+  margin-top: 120px;
+  position: fixed;
+  height: 100%;
+  background-color: lightgray;
+  border-right-color: green;
+  border-right-width: 10px;
+  border-right-style: solid;
+  border-left-color: green;
+  border-left-width: 10px;
+  border-left-style: solid;
   align-items: center;
   justify-content: center;
 }
 
 .content{
-  grid-area: content;
+  grid-area: right;
   align-items: center;
   justify-content: center;
-} */
+}

@@ -6,8 +6,8 @@ class TopicPostScreen extends Component {
 
     state = {
         "topics": null,
-        "slug": null,
-        "description": null,
+        "slug": "",
+        "description": "",
         displayInvalidInput: false,
         errorMessage: null,
     }
@@ -31,7 +31,6 @@ class TopicPostScreen extends Component {
         event.preventDefault();
             postTopic(slug, description)
             .then((res) => {
-                console.log('going here...')
                 navigate(`/topics`, {
                     state: {newTopic: true}
                 })

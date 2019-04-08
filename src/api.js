@@ -41,23 +41,23 @@ export const fetchSingleArticle = (article_id) => {
 }
 
 export const postTopic = (slug, description) => {
+    console.log(`trying to post topic with ${slug} as the slug and ${description} as the description`);
     return axios.post(`${baseURL}/topics`, {slug, description})
         .then(({data: {topic}}) => {
             return topic
         })
         .catch(err => {
+            console.dir(err)
             throw(err);
         })
 }
 
 export const postArticle = (article) => {
-    console.log(article);
     return axios.post(`${baseURL}/articles`, article)
     .then(({data: {createdArticle}}) => {
         return createdArticle;
     })
     .catch((err) => {
-        console.log('here')
         throw(err);
     })
 }
