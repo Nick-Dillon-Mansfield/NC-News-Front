@@ -56,7 +56,7 @@ class Comments extends Component {
             <CommentPoster user={this.props.user} article_id={this.props.article_id} updateCommentsToDisplay={this.updateCommentsToDisplay} updateCommentCounter={this.props.updateCommentCounter}/>
             {comments ? 
                 comments.map(comment => {
-                    return <CommentDisplayer key={comment.comment_id} updateCommentCounter={this.props.updateCommentCounter} updateVotesToDisplay={this.updateVotesToDisplay} comment={comment} />
+                    return <CommentDisplayer user={this.props.user} key={comment.comment_id} updateCommentCounter={this.props.updateCommentCounter} updateVotesToDisplay={this.updateVotesToDisplay} comment={comment} />
                 }) :
             <p>No comments to show! :O</p>
             }

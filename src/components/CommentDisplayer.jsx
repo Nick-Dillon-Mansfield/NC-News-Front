@@ -22,6 +22,7 @@ class ArticleDisplayer extends Component {
     }
 
     render() {
+        console.log('comment displayer ---> ' + this.props.user)
         const {user, author, body, comment_id, created_at, votes} = this.props.comment;
         const {updateVotesToDisplay} = this.props;
         if (this.state.commentsToHide.includes(comment_id)) {

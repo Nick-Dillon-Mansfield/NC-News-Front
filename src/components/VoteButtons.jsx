@@ -4,21 +4,19 @@ import {voteOnPost} from '../api';
 class VoteButtons extends Component {
 
     state = {
-        user: null,
         displayLoginMsg: false,
         opinion: 0
     }
 
     componentDidMount() {
         this.setState({
-            user: this.props.user
+            displayLoginMsg: false
         })
     }
 
     componentDidUpdate(prevProps, prevState) {
         if (prevProps.user !== this.props.user) {
             this.setState({
-                user: this.props.user,
                 displayLoginMsg: false
             })
         }
@@ -28,9 +26,10 @@ class VoteButtons extends Component {
         const {type, id, updateVotesToDisplay} = this.props;
         const increment = +event.target.value
         event.preventDefault();
-        const {user} = this.state;
+        const {user} = this.props;
         if (user) {
             updateVotesToDisplay(increment, id);
+            console.log(this.state.displayLoginMsg)
             voteOnPost(type, id, increment)
             .then(() => {
                 this.setState(prevState => ({
@@ -45,6 +44,8 @@ class VoteButtons extends Component {
     }
 
     render() {
+        console.log('vote buttons ---> ' + this.props.user)
+        console.log('vote buttons ---> ' + this.state.displayLoginMsg)
         const {displayLoginMsg, opinion} = this.state;
         return <div>
             <button onClick={this.handleClick} value={1} disabled={opinion===1}>Like</button>
