@@ -15,12 +15,6 @@ class Topics extends Component {
             this.setState({ topics });
         })
     }
-    
-    componentDidUpdate(prevProps, prevState) {
-        if (prevState.topics !== this.state.topics) {
-            this.setState({topics: this.state.topics})
-        }
-    }
 
     handleClick = (topic) => {
         this.setState({ topic })

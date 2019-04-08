@@ -29,7 +29,6 @@ class VoteButtons extends Component {
         const {user} = this.props;
         if (user) {
             updateVotesToDisplay(increment, id);
-            console.log(this.state.displayLoginMsg)
             voteOnPost(type, id, increment)
             .then(() => {
                 this.setState(prevState => ({
@@ -44,8 +43,6 @@ class VoteButtons extends Component {
     }
 
     render() {
-        console.log('vote buttons ---> ' + this.props.user)
-        console.log('vote buttons ---> ' + this.state.displayLoginMsg)
         const {displayLoginMsg, opinion} = this.state;
         return <div>
             <button onClick={this.handleClick} value={1} disabled={opinion===1}>Like</button>
