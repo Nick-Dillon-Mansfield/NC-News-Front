@@ -2,17 +2,17 @@ import React, { Component } from 'react';
 import './index.css';
 import './App.css';
 import { Router, Link } from '@reach/router';
-import Header from './components/Header';
-import Home from './components/Home';
-import Account from './components/Account';
-import Topics from './components/Topics';
-import Articles from './components/Articles';
-import Help from './components/Help';
-import About from './components/About';
-import SingleArticle from './components/SingleArticle'
-import ArticlePostScreen from './components/ArticlePostScreen'
-import TopicPostScreen from './components/TopicPostScreen'
-import Page404 from './components/Page404'
+import Header from './components/content/Header';
+import Home from './components/content/Home';
+import Account from './components/content/Account';
+import Topics from './components/content/Topics';
+import Articles from './components/content/Articles';
+import Help from './components/content/Help';
+import About from './components/content/About';
+import SingleArticle from './components/content/SingleArticle'
+import ArticlePostScreen from './components/posters/ArticlePostScreen'
+import TopicPostScreen from './components/posters/TopicPostScreen'
+import Page404 from './components/content/Page404'
 
 
 class App extends Component {

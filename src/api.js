@@ -47,7 +47,6 @@ export const postTopic = (slug, description) => {
             return topic
         })
         .catch(err => {
-            console.dir(err)
             throw(err);
         })
 }
