@@ -50,12 +50,13 @@ class Comments extends Component {
 
     render() {
         const comments = this.state.comments;
+        const {user, updateCounter, article_id} = this.props
         return (
             <div>
-            <CommentPoster user={this.props.user} article_id={this.props.article_id} updateCommentsToDisplay={this.updateCommentsToDisplay} updateCommentCounter={this.props.updateCommentCounter}/>
+            <CommentPoster user={user} article_id={article_id} updateCommentsToDisplay={this.updateCommentsToDisplay} updateCounter={updateCounter}/>
             {comments ? 
                 comments.map(comment => {
-                    return <CommentDisplayer user={this.props.user} key={comment.comment_id} updateCommentCounter={this.props.updateCommentCounter} updateVotesToDisplay={this.updateVotesToDisplay} comment={comment} />
+                    return <CommentDisplayer user={user} key={comment.comment_id} updateCounter={updateCounter} updateVotesToDisplay={this.updateVotesToDisplay} comment={comment} />
                 }) :
             <p>No comments to show! :O</p>
             }

@@ -17,7 +17,7 @@ class ArticleDisplayer extends Component {
 
     render() {
         const {author, body, comment_id, created_at, votes} = this.props.comment;
-        const {user, updateVotesToDisplay, updateCommentCounter} = this.props;
+        const {user, updateVotesToDisplay, updateCounter} = this.props;
         const {hideComment} = this.state;
         if (hideComment) {
             return <div>
@@ -30,7 +30,7 @@ class ArticleDisplayer extends Component {
             <p>{body}</p>
             <h6>{author}   ||   {created_at}   ||   Votes: {votes}</h6>
             <VoteButtons user={this.props.user} type="Comment" id={comment_id} updateVotesToDisplay={updateVotesToDisplay}/>
-            {author === user && <DeleteButton updateCommentCounter={updateCommentCounter} id={comment_id} hideItem={this.hideItem} type="Comment" url={url}/>}
+            {author === user && <DeleteButton updateCounter={updateCounter} id={comment_id} hideItem={this.hideItem} type="Comment" url={url}/>}
         </div>
     }
 }

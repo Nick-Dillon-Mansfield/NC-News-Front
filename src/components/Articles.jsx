@@ -66,19 +66,19 @@ class Articles extends Component {
         return <ul>
             {articles.map(article => {
                 const {title, topic, author, created_at, comment_count, article_id, votes} = article;
-                return <ArticleDisplayer key={article_id} title={title} topic={topic} author={author} created_at={created_at} comment_count={comment_count} article_id={article_id} votes={votes} user={this.props.user} updateArticleCounter={this.updateArticleCounter}/>
+                return <ArticleDisplayer key={article_id} title={title} topic={topic} author={author} created_at={created_at} comment_count={comment_count} article_id={article_id} votes={votes} user={this.props.user} updateCounter={this.updateCounter}/>
             })}
         </ul>
     };
 
-    updateArticleCounter = (newArticleCount) => {
+    updateCounter = (newCount) => {
         this.setState(prevState => ({
-            articleCount: +prevState.articleCount + +newArticleCount
+            articleCount: +prevState.articleCount + +newCount
         }))
     }
 
     render() {
-        const articleCount = this.state.articleCount ? this.state.articles.length : 0;
+        const articleCount = this.state.articleCount;
         const subject = this.state.topic ? `about ${this.state.topic}` : ""
         const subjectURL = this.state.topic ? `topic=${this.state.topic}&` : ""
         const sortByURL = this.state.url + '?' + subjectURL + "sort_by=";

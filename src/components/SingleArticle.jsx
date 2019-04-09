@@ -42,9 +42,9 @@ class SingleArticle extends Component {
         }))
     }
     
-    updateCommentCounter = (newCommentCount) => {
+    updateCounter = (newCount) => {
             this.setState(prevState => ({
-            comments: +prevState.comments + +newCommentCount
+            comments: +prevState.comments + +newCount
         }))
     }
 
@@ -63,7 +63,7 @@ class SingleArticle extends Component {
             {author === this.props.user && <DeleteButton id={article_id} url='/articles' type="Your Article"/>}
             <h4>Comments: {this.state.comments}</h4> <br/>
             <button onClick={this.handleClick}>Show/Hide Comments Section</button>
-            {this.state.showComments && <Comments updateCommentCounter={this.updateCommentCounter} user={this.props.user} article_id={this.props.article_id}/>}
+            {this.state.showComments && <Comments updateCounter={this.updateCounter} user={this.props.user} article_id={this.props.article_id}/>}
         </div>
         ) 
         else {

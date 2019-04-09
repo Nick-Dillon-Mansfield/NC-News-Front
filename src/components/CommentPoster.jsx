@@ -25,10 +25,10 @@ class CommentPoster extends Component {
     }
     
     handleSubmit = (event) => {
-        const {user, article_id, updateCommentsToDisplay, updateCommentCounter} = this.props;
+        const {user, article_id, updateCommentsToDisplay, updateCounter} = this.props;
         const {body} = this.state;
         event.preventDefault()
-        updateCommentCounter(1)
+        updateCounter(1)
         postComment(user, body, article_id)
         .then(comment => {
             updateCommentsToDisplay(comment)

@@ -5,19 +5,14 @@ import {navigate} from '@reach/router'
 class DeleteButton extends Component {
     
     handleClick = (event) => {
-        const {type, id, url, hideItem} = this.props;
+        const {type, id, url, hideItem, updateCounter} = this.props;
         event.preventDefault()
         if (window.confirm('Are you sure you want to delete this? Once you do, you cannot undo it!')) {
             deletePost(type, id)
             .then(() => {
-                if (type === "Comment") {
-                    const {updateCommentCounter} = this.props
+                if (type === "Comment" || type === "Article") {
                     hideItem();
-                    updateCommentCounter(-1)
-                } else if (type === "Article") {
-                    const {updateArticleCounter} = this.props;
-                    hideItem()
-                    updateArticleCounter(-1)
+                    updateCounter(-1)
                 } else {
                     navigate(url, {
                         state: {articleDeleted: true}
