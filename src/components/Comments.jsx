@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { fetchComments } from '../api';
 import CommentPoster from './CommentPoster'
-import CommentDisplayer from './CommentDisplayer'
+import PostsDisplayer from './PostsDisplayer';
 import '../index.css'
 
 class Comments extends Component {
@@ -56,7 +56,7 @@ class Comments extends Component {
             <CommentPoster user={user} article_id={article_id} updateCommentsToDisplay={this.updateCommentsToDisplay} updateCounter={updateCounter}/>
             {comments ? 
                 comments.map(comment => {
-                    return <CommentDisplayer user={user} key={comment.comment_id} updateCounter={updateCounter} updateVotesToDisplay={this.updateVotesToDisplay} comment={comment} />
+                    return <PostsDisplayer type="Comment" user={user} key={comment.comment_id} updateCounter={updateCounter} updateVotesToDisplay={this.updateVotesToDisplay} comment={comment} />
                 }) :
             <p>No comments to show! :O</p>
             }

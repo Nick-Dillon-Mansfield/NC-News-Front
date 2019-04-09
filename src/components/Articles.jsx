@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { Link, navigate } from '@reach/router';
 import { fetchTopics, fetchArticles } from '../api';
-import ArticleDisplayer from './ArticleDisplayer';
+import PostsDisplayer from './PostsDisplayer';
 
 class Articles extends Component {
     state = {
@@ -65,8 +65,7 @@ class Articles extends Component {
         const {articles} = this.state;
         return <ul>
             {articles.map(article => {
-                const {title, topic, author, created_at, comment_count, article_id, votes} = article;
-                return <ArticleDisplayer key={article_id} title={title} topic={topic} author={author} created_at={created_at} comment_count={comment_count} article_id={article_id} votes={votes} user={this.props.user} updateCounter={this.updateCounter}/>
+                return <PostsDisplayer key={article.article_id} type="Article" article={article} user={this.props.user} updateCounter={this.updateCounter}/>
             })}
         </ul>
     };
