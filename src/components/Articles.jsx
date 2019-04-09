@@ -61,15 +61,6 @@ class Articles extends Component {
         });
     };
 
-    displayArticles = () => {
-        const {articles} = this.state;
-        return <ul>
-            {articles.map(article => {
-                return <PostsDisplayer key={article.article_id} type="Article" article={article} user={this.props.user} updateCounter={this.updateCounter}/>
-            })}
-        </ul>
-    };
-
     updateCounter = (newCount) => {
         this.setState(prevState => ({
             articleCount: +prevState.articleCount + +newCount
@@ -103,7 +94,11 @@ class Articles extends Component {
                         <option value={`${sortByURL}votes&order=asc`} >Votes (fewest to most)</option>
                     </select>
                 </form> : null}
-                {this.state.articles && this.displayArticles()}
+                {this.state.articles && <ul>
+                    {this.state.articles.map(article => {
+                        return <PostsDisplayer key={article.article_id} type="Article" article={article} user={this.props.user} updateCounter={this.updateCounter}/>
+                    })}
+                </ul>}
             </div>
         )
     }
