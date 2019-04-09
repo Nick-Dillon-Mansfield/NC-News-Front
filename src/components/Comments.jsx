@@ -8,7 +8,6 @@ class Comments extends Component {
     
     state = {
         comments: [],
-        commentDeleted: false,
     }
     
     componentDidMount() {

@@ -6,24 +6,18 @@ import '../index.css';
 class ArticleDisplayer extends Component {
     
     state = {
-        articlesToHide: [], 
+        hideArticle: false, 
     }
 
-    updateArticlesToHide = (deletedArticleID) => {
-        if (this.state.articlesToHide && this.state.articlesToHide.length > 0) {
-            this.setState(prevState => ({
-                articlesToHide: [deletedArticleID, ...prevState.articlesToHide]
-            }))
-        } else {
-            this.setState({
-                articlesToHide: [deletedArticleID]
-            })
-        }
+    hideItem = () => {
+        this.setState({
+                hideArticle: true,
+        })
     }
 
     render() {
         const {title, topic, author, created_at, comment_count, article_id, votes, updateArticleCounter} = this.props;
-        if (this.state.articlesToHide.includes(article_id)) {
+        if (this.state.hideArticle) {
             return <div>
                     <h3 className="deleted">Article deleted :O</h3>
                 </div>
@@ -41,7 +35,7 @@ class ArticleDisplayer extends Component {
             <Link to={`/articles/${article_id}`} key={`${article_id}`}>
                 Open Article
             </Link><br />
-            {author === this.props.user && <DeleteButton id={article_id} url={'/articles'} updateArticlesToHide={this.updateArticlesToHide} updateArticleCounter={updateArticleCounter} type="Article"/>}
+            {author === this.props.user && <DeleteButton id={article_id} url={'/articles'} hideItem={this.hideItem} updateArticleCounter={updateArticleCounter} type="Article"/>}
         </div>
     }
 }
