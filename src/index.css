@@ -13,6 +13,10 @@ code {
     monospace;
 }
 
+.pageTitle{
+  color: brown
+}
+
 .newPost {
   color: green;
 }
@@ -36,4 +40,10 @@ code {
   list-style-position: outside;
   list-style: square;
   
+}
+
+#ncNews{
+  color: lightskyblue;
+  font-style: italic;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif
 }

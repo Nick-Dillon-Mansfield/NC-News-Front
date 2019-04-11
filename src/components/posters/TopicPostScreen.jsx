@@ -55,7 +55,7 @@ class TopicPostScreen extends Component {
     render() {
         return (
             <div>
-                <h3>New Topic</h3>
+                <h2 className="pageTitle">New Topic</h2>
                 <p>Please ensure you have entered a name for your topic, and a brief description describing what the topic is for!</p>
                 -------------------
                 <form onSubmit={this.handleSubmit}>

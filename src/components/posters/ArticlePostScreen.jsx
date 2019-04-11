@@ -30,24 +30,30 @@ class ArticlePostScreen extends Component {
         const {topic, title, body} = this.state;
         const username = this.props.user;
         event.preventDefault();
-        if (topic === "" || title === "" || body === "") {
+        if (topic === "" || topic === "..." || title === "" || body === "") {
             this.setState({missingInfo: true})
-        }
-        else postArticle({title, topic, body, username})
-        .then((createdArticle) => {
-            navigate(`/articles/${createdArticle.article_id}`, {
-                state: {newArticle: true}
+        } else if (title.match(/^\s+$/) || body.match(/^\s+$/)) {
+            this.setState({
+                displayInvalidInput: true,
+                errorMessage: "You can't just have whitespace..."
+            }) 
+        } else {
+            postArticle({title, topic, body, username})
+            .then((createdArticle) => {
+                navigate(`/articles/${createdArticle.article_id}`, {
+                    state: {newArticle: true}
+                })
             })
-        })
-        .catch(err => {
-            this.setState({missingInfo: true})
-        })
+            .catch(err => {
+                this.setState({missingInfo: true})
+            })
+        }
     }
 
     render() {
         return (
             <div>
-                <h3>New Article</h3>
+                <h2 class="pageTitle">New Article</h2>
                 <p>Please ensure you have selected a topic, entered a title and your article before submitting!</p>
                 -----------------------------
                 <form onSubmit={this.handleSubmit}>
@@ -65,11 +71,11 @@ class ArticlePostScreen extends Component {
                     <p>Can't find the topic you're looking for? Click <Link to='/topics/post'>here</Link> to create a new one: </p> <br/>
                     <label>
                         Title: 
-                        <input type="text" onChange={this.handleChange} data_key="title"></input>
+                        <input type="text" required onChange={this.handleChange} data_key="title"></input>
                     </label> <br/>
                     <label>
                         Article: 
-                        <textarea data_key="body" onChange={this.handleChange}></textarea>
+                        <textarea data_key="body" required onChange={this.handleChange}></textarea>
                     </label> <br/>
                     {this.props.user ? 
                         <button type="submit">Post article!</button> :

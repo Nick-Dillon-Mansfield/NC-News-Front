@@ -3,7 +3,7 @@ import React from 'react';
 const Help = () => {
     return (
         <div>
-            <h4 className="h4title">Using the website</h4>
+            <h2 class="pageTitle">Using the website</h2>
             <p>
                 To begin, you can login using one of the following user names:
             </p>

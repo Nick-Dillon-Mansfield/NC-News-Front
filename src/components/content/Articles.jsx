@@ -79,7 +79,7 @@ class Articles extends Component {
         const sortByURL = this.state.url + '?' + subjectURL + "sort_by=";
         return (
             <div>
-                <h3>Articles</h3>
+                <h2 class="pageTitle">Articles</h2>
                 {articles && articleCount === 0 ? <h4>loading...</h4> : articleCount > 0 ? <h4>Displaying {articleCount} article(s) {subject}</h4> : <h4>Looks like there are no articles about {subject}! Why don't you post one?</h4>}
                 {this.props.user ? 
                     <Link to="/articles/post" key='articles/post' >

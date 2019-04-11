@@ -54,7 +54,7 @@ class SingleArticle extends Component {
         return ( 
             <div>
             {this.props.location.state && this.props.location.state.newArticle && <h3 className="newPost">Thank you for posting - here is your article!</h3>}
-            <h2>{title}</h2>
+            <h2 class="pageTitle">{title}</h2>
             <h4>by {author}</h4>
             <p>{body}</p>
             <h6>Posted to '{topic}' on {created_at}</h6>

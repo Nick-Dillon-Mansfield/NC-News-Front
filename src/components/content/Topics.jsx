@@ -43,7 +43,7 @@ class Topics extends Component {
         const topicCount = this.state.topics ? this.state.topics.length : 0;
         return (
             <div>
-                <h3>Topics</h3>
+                <h2 class="pageTitle">Topics</h2>
                 {this.props.user ? 
                     <Link to="/topics/post" key="topics/post">
                         Create Topic
