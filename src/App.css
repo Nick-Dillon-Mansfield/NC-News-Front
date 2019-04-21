@@ -8,6 +8,10 @@
   "middle"
   "content"
   "bottom";
+  grid-row-gap: 10px;
+  grid-row-start: auto;
+  background-image: url("./cssFiles/starBackground.jpg");
+  background-color: black
 }
 
 .topBar{
@@ -21,7 +25,6 @@
   padding: 10px;
   width: 100%;
 
-  background-image: linear-gradient(to right, darkblue, lightskyblue);
 }
 
 .header{
@@ -48,6 +51,7 @@
 
 .contentArea{
   grid-area: content;
+  width: 90%;
   align-items: center;
   justify-content: center;
   background-color: bisque;

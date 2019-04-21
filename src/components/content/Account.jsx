@@ -56,11 +56,11 @@ class Account extends Component {
         const {user} = this.props;
         return (
             <div className="NavBar">
-                {user && <h5 className="NavBar container">Welcome, {user}</h5>}
+                {user && <h3 className="lightText">Welcome, {user}</h3>}
                 {user ? 
                 <button type="submit" onClick={this.handleLogout}>Log out!</button> : 
                 <form>
-                    <label>
+                    <label className="lightText">
                         Username: 
                         <input type="text" data_key="user" onChange={this.handleChange} placeholder="e.g. tickle122"></input>
                         <button type="submit" onClick={this.handleSubmit}>Login!</button>
