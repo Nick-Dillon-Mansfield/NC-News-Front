@@ -47,10 +47,8 @@ class App extends Component {
         <Link to="/" key="home" className="home"> Home </Link> <br/>
         <Link to="topics" key="topics" className="topics"> Topics </Link> <br/>
         <Link to="articles" key="articles" className="articles"> Articles </Link> <br/>
-        <Link to="about" key="about" className="about"> About </Link> <br/>
-        <Link to="help" key="help" className="help"> Help </Link>
         </div>
-        <div className="content">
+        <div className="contentArea">
         <Router>
           <Home default />
           <Topics path="topics" user={user}/>
@@ -63,6 +61,10 @@ class App extends Component {
           <ArticlePostScreen path="articles/post" user={user}/>
           <Page404 path='/Page404' user={user}/>
         </Router>
+        </div>
+        <div className="helpBar">
+        <Link to="about" key="about" className="about"> About </Link>
+        <Link to="help" key="help" className="help"> Help </Link>
         </div>
       </div>
     );

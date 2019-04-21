@@ -31,7 +31,6 @@ class Articles extends Component {
             })
         })
         .catch(err => {
-            console.log(err);
             if (err.response.status === 404) this.setState({articleCount: 0})
         });
     };
@@ -79,7 +78,7 @@ class Articles extends Component {
         const sortByURL = this.state.url + '?' + subjectURL + "sort_by=";
         return (
             <div>
-                <h2 class="pageTitle">Articles</h2>
+                <h2 className="pageTitle">Articles</h2>
                 {articles && articleCount === 0 ? <h4>loading...</h4> : articleCount > 0 ? <h4>Displaying {articleCount} article(s) {subject}</h4> : <h4>Looks like there are no articles about {subject}! Why don't you post one?</h4>}
                 {this.props.user ? 
                     <Link to="/articles/post" key='articles/post' >
@@ -99,11 +98,11 @@ class Articles extends Component {
                         <option value={`${sortByURL}votes&order=asc`} >Votes (fewest to most)</option>
                     </select>
                 </form> : null}
-                {this.state.articles && <ul>
+                {this.state.articles && <div className="content">
                     {this.state.articles.map(article => {
                         return <PostsDisplayer key={article.article_id} type="Article" article={article} user={this.props.user} updateCounter={this.updateCounter}/>
                     })}
-                </ul>}
+                </div>}
             </div>
         )
     }

@@ -20,13 +20,12 @@ class PostsDisplayer extends Component {
         const {updateCounter, type} = this.props;
         if (this.state.hideItem) {
             return <div>
-                    <h3 className="deleted">{type} deleted :O</h3>
+                    <h3 className="deleted" className="postedTopic">{type} deleted :O</h3>
                 </div>
         }
         if (type === "Article") {
             const {title, topic, author, created_at, comment_count, article_id, votes} = this.props.article;
-            return <div key={article_id}>
-        =====================
+            return <div key={article_id} className="postedArticle">
             <p>
                 Title: {title} <br/>
                 Topic: {topic} <br/>
@@ -45,7 +44,7 @@ class PostsDisplayer extends Component {
             const {author, body, comment_id, created_at, votes} = this.props.comment;
             const {user, updateVotesToDisplay, updateCounter} = this.props;
             const url = `/articles`
-            return <div key={comment_id}>
+            return <div key={comment_id} className="postedItem">
                 --------------
                 <p>{body}</p>
                 <h6>{author}   ||   {created_at}   ||   Votes: {votes}</h6>

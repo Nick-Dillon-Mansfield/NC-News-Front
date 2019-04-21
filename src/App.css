@@ -1,19 +1,18 @@
 .App {
+  min-height: 100%;
   text-align: center;
   display: grid;
-  grid-template-columns: 100px auto;
-  grid-template-rows: 120px auto;
+  grid-template-rows: auto auto auto;
   grid-template-areas: 
-  "top top"
-  "left right"
-  "left right";
+  "top"
+  "middle"
+  "content"
+  "bottom";
 }
 
 .topBar{
   grid-area: top;
   grid-row-end: 1;
-  display: grid;
-  grid-template-areas: "left right";
  
   position: fixed;
   
@@ -23,9 +22,6 @@
   width: 100%;
 
   background-image: linear-gradient(to right, darkblue, lightskyblue);
-  border-style: solid;
-  border-color: green;
-  border-width: 10px;
 }
 
 .header{
@@ -41,23 +37,58 @@
 }
 
 .navBar{
-  grid-area: 2 / 1 / span 2 / span 1;
+  overflow: hidden;
+  grid-area: middle;
   margin-top: 120px;
-  position: fixed;
-  height: 100%;
+  height: 1fr;
   background-color: lightgray;
-  border-right-color: green;
-  border-right-width: 10px;
-  border-right-style: solid;
-  border-left-color: green;
-  border-left-width: 10px;
-  border-left-style: solid;
   align-items: center;
   justify-content: center;
 }
 
-.content{
-  grid-area: right;
+.contentArea{
+  grid-area: content;
   align-items: center;
   justify-content: center;
+  background-color: bisque;
+}
+
+.helpBar{
+  background-color: blueviolet;
+  position: relative;
+  height: 50px;
+  clear: both;
+  grid-area: bottom;
+}
+
+/*container*/
+.content{
+  width: 100%;
+  height: auto;
+  background: yellow;
+
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  flex-flow: wrap;
+}
+
+/*box*/
+.postedArticle{
+  width: 20%;
+  height: auto;
+  align-content: center;
+  background: lightcoral;
+  margin: 10px;
+  padding: 10px;
+  box-sizing: border-box;
+}
+
+.postedTopic{
+  width: 20%;
+  height: 300px;
+  align-content: center;
+  background: green;
+  margin: 20px;
+  box-sizing: border-box;
 }
