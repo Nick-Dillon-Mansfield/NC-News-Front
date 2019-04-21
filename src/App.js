@@ -39,14 +39,20 @@ class App extends Component {
           <div className="header">
           <Header user={user} className="title"/>
           </div>
+          <div className="navButtons">
+            <div>
+            <Link to="/" key="home" className="home"> Home </Link>
+            </div>
+            <div>
+            <Link to="topics" key="topics" className="topics"> Topics </Link>
+            </div>
+            <div>
+            <Link to="articles" key="articles" className="articles"> Articles </Link>
+            </div>
+          </div>
           <div className="account">
           <Account user={user} setUser={this.setUser} className='login'/>
           </div>
-        </div>
-        <div className='navBar'>
-        <Link to="/" key="home" className="home"> Home </Link> <br/>
-        <Link to="topics" key="topics" className="topics"> Topics </Link> <br/>
-        <Link to="articles" key="articles" className="articles"> Articles </Link> <br/>
         </div>
         <div className="contentArea">
         <Router>
