@@ -58,7 +58,7 @@ class Account extends Component {
             <div className="NavBar">
                 {user && <h3 className="lightText">Welcome, {user}</h3>}
                 {user ? 
-                <button type="submit" onClick={this.handleLogout}>Log out!</button> : 
+                <button type="submit" onClick={this.handleLogout}>Log out</button> : 
                 <form>
                     <label className="lightText">
                         Username: 

@@ -8,7 +8,7 @@
   "content"
   "bottom";
   background-image: url("./cssFiles/starBackground.jpg");
-  background-color: black
+  background-color: black;
 }
 
 .topBar{
@@ -16,13 +16,14 @@
   grid-row-end: 1;
  
   position: sticky;
-  border-bottom-color: brown;
-  border-bottom-style: dashed;
-  border-bottom-width: 10px;
+  background-image: url("./cssFiles/starBackground.jpg");
 
-  justify-content: space-between;
+  border-bottom-color: lightskyblue;
+  border-bottom-style: double;
+  border-bottom-width: 5px;
 
-  padding: 10px;
+  justify-content: space-evenly;
+
   width: 100%;
 
   display: flex;
@@ -30,47 +31,54 @@
   flex-flow: wrap;
 }
 
-    .header{
-      align-self: center;
-      padding-left: 50px;
-      flex-basis: 1fr;
+  .header{
+    align-self: center;
+    padding-left: 50px;
+    flex-basis: 20%;
+    margin-top: 0px;
+    margin-bottom: 0px;
+  }
+    @media screen and (max-width: 787px) {
+      h1{
+        margin-top: 10px;
+        margin-bottom: 10px;
+      }
     }
-
-    .navButtons{
-      align-self: center;
-      flex-basis: 3fr;
-      display: flex;
-      justify-content: space-between;
-    }
-    
-        .home{
-          color: lightskyblue;
-          align-self: center;
-          align-items: center;
-          justify-content: center;
-          flex-basis: 1fr;
-        }
-        .topics{
-          color: lightskyblue;
-          align-self: center;
-          align-items: center;
-          justify-content: center;
-          flex-basis: 1fr;
-        }
-        .articles{
-          color: lightskyblue;
-          align-self: center;
-          align-items: center;
-          justify-content: center;
-          flex-basis: 1fr;
-        }
-    
-    .account{
+  
+  .navButtons{
+    align-self: center;
+    flex-basis: 40%;
+    display: flex;
+    justify-content: space-evenly;
+    flex-flow: wrap;
+  }
+    .home{
+      color: lightskyblue;
       justify-content: center;
-      align-self: center;
-      margin-right: 40px;
       flex-basis: 1fr;
+      padding-left: 10px;
+      padding-right: 10px;
     }
+    .topics{
+      color: lightskyblue;
+      justify-content: center;
+      flex-basis: 1fr;
+      padding-left: 10px;
+      padding-right: 10px;
+    }
+    .articles{
+      color: lightskyblue;
+      justify-content: center;
+      flex-basis: 1fr;
+      padding-left: 10px;
+      padding-right: 10px;
+    }
+  
+  .account{
+    justify-content: center;
+    align-self: center;
+    flex-basis: 25%;
+  }
 
 .contentArea{
   grid-area: content;
@@ -79,20 +87,12 @@
   background-color: bisque;
 }
 
-.helpBar{
-  background-color: blueviolet;
-  position: relative;
-  height: 50px;
-  clear: both;
-  grid-area: bottom;
-}
-
 /*container*/
 .content{
   width: 100%;
   height: auto;
   background: yellow;
-
+  
   display: flex;
   flex-direction: row;
   justify-content: space-around;
@@ -108,6 +108,7 @@
   margin: 10px;
   padding: 10px;
   box-sizing: border-box;
+  min-width: 300px;
 }
 
 .postedTopic{
@@ -118,3 +119,34 @@
   margin: 20px;
   box-sizing: border-box;
 }
+
+.helpBar{
+  background-image: url("./cssFiles/starBackground.jpg");
+  background-color: black;  position: relative;
+
+  border-bottom-color: cadetblue;
+  border-top-style: dashed;
+  border-top-width: 2px;
+  
+justify-content: space-evenly;
+
+  height: 50px;
+  clear: both;
+  grid-area: bottom;
+}
+
+  .about{
+    color: lightskyblue;
+    justify-content: center;
+    flex-basis: 1fr;
+    padding-left: 10px;
+    padding-right: 10px;  
+  }
+
+  .help{
+    color: lightskyblue;
+    justify-content: center;
+    flex-basis: 1fr;
+    padding-left: 10px;
+    padding-right: 10px;  
+  }
