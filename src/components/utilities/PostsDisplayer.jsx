@@ -20,7 +20,7 @@ class PostsDisplayer extends Component {
         const {updateCounter, type} = this.props;
         if (this.state.hideItem) {
             return <div>
-                    <h3 className="deleted" className="postedTopic">{type} deleted :O</h3>
+                    <h3 className="deleted">{type} deleted :O</h3>
                 </div>
         }
         if (type === "Article") {

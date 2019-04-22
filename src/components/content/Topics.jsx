@@ -22,10 +22,10 @@ class Topics extends Component {
 
     displayTopics = () => {
         const {topics} = this.state;
-        return <div>
+        return <div className="content">
             {topics.map(topic => {
                 return (
-                    <div key={topic.slug}>
+                    <div key={topic.slug} className="postedTopic">
                         <p>
                             Topic: {topic.slug} <br/>
                             Description: {topic.description}
@@ -43,17 +43,19 @@ class Topics extends Component {
         const topicCount = this.state.topics ? this.state.topics.length : 0;
         return (
             <div>
-                <h2 class="pageTitle">Topics</h2>
-                {this.props.user ? 
-                    <Link to="/topics/post" key="topics/post">
-                        Create Topic
-                    </Link> : 
-                    <h4>
-                        Login to create a topic!
-                    </h4>
-                }
-                {this.props.location.state && this.props.location.state.newTopic && <p className="newPost">Thank you for posting a new topic :)</p>}
-                <h4>Displaying {topicCount} topics</h4>
+                <div className="contentInfoArea">
+                    <h2 class="pageTitle">Topics</h2>
+                    {this.props.user ? 
+                        <Link to="/topics/post" key="topics/post">
+                            Create Topic
+                        </Link> : 
+                        <h4>
+                            Login to create a topic!
+                        </h4>
+                    }
+                    {this.props.location.state && this.props.location.state.newTopic && <p className="newPost">Thank you for posting a new topic :)</p>}
+                    <h4>Displaying {topicCount} topics</h4>
+                </div>
                 {this.state.topics && this.displayTopics()}
             </div>
         )

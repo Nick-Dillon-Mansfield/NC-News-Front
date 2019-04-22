@@ -3,7 +3,7 @@ import React from 'react';
 const Home = () => {
     
     return (
-        <div>
+        <div className="contentInfoArea">
             <p>
                 Welcome to NC-News - your one-stop-shop for the most important news and discussions!
             </p> <br/>
@@ -12,6 +12,9 @@ const Home = () => {
             </p> <br/>
             <p>
                 To access more features (e.g. the ability to post to the website), feel free to login - you can use the username 'tickle122' to get started!
+            </p> <br/>
+            <p>
+                Happy reading :)
             </p>
         </div>
     )

@@ -2,7 +2,7 @@ import React from 'react';
 
 const Help = () => {
     return (
-        <div>
+        <div className="contentInfoArea">
             <h2 class="pageTitle">Using the website</h2>
             <p>
                 To begin, you can login using one of the following user names:
