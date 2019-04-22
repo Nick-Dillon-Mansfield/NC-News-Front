@@ -7,8 +7,6 @@
   "top"
   "content"
   "bottom";
-  background-image: url("./cssFiles/starBackground.jpg");
-  background-color: black;
 }
 @media screen and (max-width: 490px) {
   .App{
@@ -90,6 +88,8 @@
   grid-area: content;
   align-items: center;
   justify-content: center;
+  background-image: url('./cssFiles/starBackground.jpg');
+
 }
   .contentInfoArea{
     border: 2px;
@@ -98,7 +98,6 @@
     background: gray;
     opacity: 0.8;
   }
-  /*container*/
   .content{
     width: 100%;
     height: auto;
@@ -108,22 +107,37 @@
     justify-content: space-around;
     flex-flow: wrap;
   }
-    /*box*/
     .postedArticle{
       width: 20%;
       height: auto;
       align-content: center;
-      background: lightcoral;
+      background: url("./cssFiles/starBackgroundForArticles.jpg");
+      background-size: 100%;
+
+      border-radius: 10px 50px;
+      border-color: black;
+      border-style: ridge;
+      border-width: 5px;
+      
       margin: 10px;
       padding: 10px;
       box-sizing: border-box;
       min-width: 300px;
+
+      color: lightskyblue;
     }
     .postedTopic{
       width: 20%;
       height: auto;
       align-content: center;
-      background: green;
+      background: url("./cssFiles/starBackgroundForTopics.jpg");
+      background-size: 100%;
+
+      border-radius: 10px 50px;
+      border-color: black;
+      border-style: ridge;
+      border-width: 5px;
+
       margin: 10px;
       padding: 10px;
       box-sizing: border-box;
@@ -132,7 +146,7 @@
 
 .helpBar{
   background-image: url("./cssFiles/starBackground.jpg");
-  background-color: black;  position: relative;
+  background-color: black;
 
   border-top-color: lightskyblue;
   border-top-style: double;
@@ -144,7 +158,6 @@
   grid-area: bottom;
   position: sticky;
 }
-
   .about{
     color: lightskyblue;
     justify-content: center;
@@ -153,7 +166,6 @@
     padding-right: 10px;
     padding-top: 10px;
   }
-
   .help{
     color: lightskyblue;
     justify-content: center;

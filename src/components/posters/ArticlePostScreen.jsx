@@ -52,8 +52,8 @@ class ArticlePostScreen extends Component {
 
     render() {
         return (
-            <div>
-                <h2 class="pageTitle">New Article</h2>
+            <div className="contentInfoArea">
+                <h2 className="pageTitle">New Article</h2>
                 <p>Please ensure you have selected a topic, entered a title and your article before submitting!</p>
                 -----------------------------
                 <form onSubmit={this.handleSubmit}>
@@ -68,7 +68,7 @@ class ArticlePostScreen extends Component {
                             })}
                         </select>
                     </label> <br/>
-                    <p>Can't find the topic you're looking for? Click <Link to='/topics/post'>here</Link> to create a new one: </p> <br/>
+                    <p>Can't find the topic you're looking for? Click <Link to='/topics/post' className="postOrReadLink">here</Link> to create a new one: </p> <br/>
                     <label>
                         Title: 
                         <input type="text" required onChange={this.handleChange} data_key="title"></input>

@@ -34,9 +34,11 @@ class PostsDisplayer extends Component {
         ------
             </p>
             <h6>Votes: {votes}  ||  Comments: {comment_count}</h6>
-            <Link to={`/articles/${article_id}`} key={`${article_id}`}>
-                Open Article
-            </Link><br />
+            <div className="postOrReadLinkBG">
+                <Link to={`/articles/${article_id}`} key={`${article_id}`} className="postOrReadLink">
+                    Open Article
+                </Link><br />
+            </div>
             {author === this.props.user && <DeleteButton id={article_id} url={'/articles'} hideItem={this.hideItem} updateCounter={updateCounter} type="Article"/>}
         </div>
         }

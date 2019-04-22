@@ -30,9 +30,11 @@ class Topics extends Component {
                             Topic: {topic.slug} <br/>
                             Description: {topic.description}
                         </p>
-                        <Link to={`/topics/${topic.slug}/articles`} key={`articles?topic=${topic.slug}`} >
-                        All article(s) about {topic.slug}
-                        </Link>
+                        <div className="postOrReadLinkBG">
+                            <Link to={`/topics/${topic.slug}/articles`} key={`articles?topic=${topic.slug}`} className="postOrReadLink">
+                            All article(s) about {topic.slug}
+                            </Link>
+                        </div>
                     </div>
                 )
             })}
@@ -44,9 +46,9 @@ class Topics extends Component {
         return (
             <div>
                 <div className="contentInfoArea">
-                    <h2 class="pageTitle">Topics</h2>
+                    <h2 className="pageTitle">Topics</h2>
                     {this.props.user ? 
-                        <Link to="/topics/post" key="topics/post">
+                        <Link to="/topics/post" key="topics/post" className="postLink">
                             Create Topic
                         </Link> : 
                         <h4>
@@ -54,7 +56,7 @@ class Topics extends Component {
                         </h4>
                     }
                     {this.props.location.state && this.props.location.state.newTopic && <p className="newPost">Thank you for posting a new topic :)</p>}
-                    <h4>Displaying {topicCount} topics</h4>
+                    <h4>Displaying {topicCount} topic(s)</h4>
                 </div>
                 {this.state.topics && this.displayTopics()}
             </div>

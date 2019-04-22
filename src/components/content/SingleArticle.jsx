@@ -52,7 +52,7 @@ class SingleArticle extends Component {
         const {author, body, created_at, title, topic, article_id} = this.state.article ? this.state.article : '';
         if (this.state.article) 
         return ( 
-            <div>
+            <div className="contentInfoArea">
             {this.props.location.state && this.props.location.state.newArticle && <h3 className="newPost">Thank you for posting - here is your article!</h3>}
             <h2 className="pageTitle">{title}</h2>
             <h4>by {author}</h4>

@@ -82,7 +82,7 @@ class Articles extends Component {
                     <h2 className="pageTitle">Articles</h2>
                     {articles && articleCount === 0 ? <h4>loading...</h4> : articleCount > 0 ? <h4>Displaying {articleCount} article(s) {subject}</h4> : <h4>Looks like there are no articles about {subject}! Why don't you post one?</h4>}
                     {this.props.user ? 
-                        <Link to="/articles/post" key='articles/post' >
+                        <Link to="/articles/post" key='articles/post' className="postOrReadLink">
                             Post Article
                         </Link> :
                         <h4>

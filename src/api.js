@@ -41,7 +41,6 @@ export const fetchSingleArticle = (article_id) => {
 }
 
 export const postTopic = (slug, description) => {
-    console.log(`trying to post topic with ${slug} as the slug and ${description} as the description`);
     return axios.post(`${baseURL}/topics`, {slug, description})
         .then(({data: {topic}}) => {
             return topic

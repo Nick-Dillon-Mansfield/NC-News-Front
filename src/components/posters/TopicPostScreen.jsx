@@ -43,7 +43,6 @@ class TopicPostScreen extends Component {
                 })
             })
             .catch(err => {
-                console.log(err)
                 this.setState({
                     displayInvalidInput: true,
                     errorMessage: err.response.data.message,
@@ -54,14 +53,14 @@ class TopicPostScreen extends Component {
 
     render() {
         return (
-            <div>
+            <div className="contentInfoArea">
                 <h2 className="pageTitle">New Topic</h2>
                 <p>Please ensure you have entered a name for your topic, and a brief description describing what the topic is for!</p>
                 -------------------
                 <form onSubmit={this.handleSubmit}>
                     <label>
                         Topic Name: 
-                        <input type="text" data_key="slug" required onChange={this.handleChange}></input>
+                        <input type="text" data_key="slug" required onChange={this.handleChange} maxlength="20"></input>
                     </label> <br/>
                     <label>
                         Topic Description: 
