@@ -7,7 +7,7 @@ const Header = (props) => {
 
     return (
         <div id="ncNews">
-            <h1 id="ncNewsText">NC News!</h1>
+            <h1 id="ncNewsText">NC News</h1>
             <img src={logo} id="ncLogo"/>
         </div>
     )

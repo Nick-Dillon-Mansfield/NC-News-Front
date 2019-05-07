@@ -8,11 +8,6 @@
   "content"
   "bottom";
 }
-/* @media screen and (max-width: 490px) {
-  .App{
-    grid-template-rows: 200px auto 50px;
-  }
-} */
 
 .topBar{
   grid-area: top;
@@ -43,6 +38,9 @@
     margin-bottom: 0px;
   }
 
+  #ncNewsText{
+    color: #d10025;
+  }
   #ncLogo{
     display: none;
   }
@@ -195,7 +193,8 @@
       max-width: 75px;
       max-height: 75px;
     }
-    /* .navButtons{
-      display: none;
-    } */
+  }
+
+  @media screen and (max-width: 500px) {
+    
   }
