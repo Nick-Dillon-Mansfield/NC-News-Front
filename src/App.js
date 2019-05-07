@@ -13,6 +13,9 @@ import SingleArticle from './components/content/SingleArticle'
 import ArticlePostScreen from './components/posters/ArticlePostScreen'
 import TopicPostScreen from './components/posters/TopicPostScreen'
 import Page404 from './components/content/Page404'
+import topicsIcon from './cssFiles/topicsIconLightBlue.png'
+import homeIcon from './cssFiles/homeIconLightBlue.png'
+import articlesIcon from './cssFiles/articlesIconLightBlue.png'
 
 
 class App extends Component {
@@ -41,13 +44,13 @@ class App extends Component {
           </div>
           <div className="navButtons">
             <div>
-            <Link to="/" key="home" className="home"> Home </Link>
+            <Link to="/" key="home" className="home"> <img className="navLogo" src={homeIcon}/> </Link>
             </div>
             <div>
-            <Link to="topics" key="topics" className="topics"> Topics </Link>
+            <Link to="topics" key="topics" className="topics"> <img className="navLogo" src={topicsIcon}/> </Link>
             </div>
             <div>
-            <Link to="articles" key="articles" className="articles"> Articles </Link>
+            <Link to="articles" key="articles" className="articles"> <img className="navLogo" src={articlesIcon}/> </Link>
             </div>
           </div>
           <div className="account">

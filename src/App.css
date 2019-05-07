@@ -68,6 +68,12 @@
       padding-left: 10px;
       padding-right: 10px;
     }
+    .navLogo{
+      max-width: 40px;
+      max-height: 40px;
+    }
+
+
     .articles{
       color: lightskyblue;
       justify-content: center;
