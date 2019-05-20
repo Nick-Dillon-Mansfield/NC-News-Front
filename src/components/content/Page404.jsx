@@ -4,10 +4,10 @@ const Page404 = () => {
     
     return (
         <div>
-            <p>
+            <p id="notFoundText">
                 Uh oh! Seems like we can't find what you are looking for!
             </p> <br/>
-            <p>
+            <p id="notFoundText">
                 To navigate around the website and find the page you want, try using the Topics / Articles pages!
             </p>
         </div>

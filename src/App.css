@@ -32,7 +32,7 @@
 
   .header{
     align-self: center;
-    padding-left: 50px;
+    padding-left: 0px;
     flex-basis: 20%;
     margin-top: 0px;
     margin-bottom: 0px;
@@ -51,6 +51,7 @@
     display: flex;
     justify-content: space-evenly;
     flex-flow: wrap;
+    overflow: hidden;
   }
     .home{
       color: lightskyblue;
@@ -194,7 +195,14 @@
       max-height: 75px;
     }
   }
+  
+#notFoundText{
+  color: lightskyblue;
+}
 
   @media screen and (max-width: 500px) {
-    
+    /* .navButtons{
+      display: none;
+    }
+     */
   }

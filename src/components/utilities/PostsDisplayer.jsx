@@ -3,6 +3,7 @@ import {Link} from '@reach/router'
 import DeleteButton from './DeleteButton';
 import VoteButtons from './VoteButtons';
 import '../../index.css';
+const moment = require('moment');
 
 class PostsDisplayer extends Component {
     
@@ -14,6 +15,14 @@ class PostsDisplayer extends Component {
         this.setState({
                 hideItem: true,
         })
+    };
+
+    formatDate = (type, date) => {
+        if (type === "Article") {
+            return moment(date).format("Do MMM YYYY, kk:mm")
+        } else {
+            return moment(date).fromNow();
+        }
     }
 
     render() {
@@ -30,7 +39,7 @@ class PostsDisplayer extends Component {
                 Title: {title} <br/>
                 Topic: {topic} <br/>
                 Author: {author} <br/>
-                Published: {created_at} <br/>
+                Published: {this.formatDate(type, created_at)} <br/>
         ------
             </p>
             <h6>Votes: {votes}  ||  Comments: {comment_count}</h6>
@@ -49,7 +58,7 @@ class PostsDisplayer extends Component {
             return <div key={comment_id} className="postedItem">
                 --------------
                 <p>{body}</p>
-                <h6>{author}   ||   {created_at}   ||   Votes: {votes}</h6>
+                <h6>{author}   ||   {this.formatDate(type, created_at)}   ||   Votes: {votes}</h6>
                 <VoteButtons user={this.props.user} type="Comment" id={comment_id} updateVotesToDisplay={updateVotesToDisplay}/>
                 {author === user && <DeleteButton updateCounter={updateCounter} id={comment_id} hideItem={this.hideItem} type="Comment" url={url}/>}
             </div>
